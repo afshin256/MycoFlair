@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research - MycoFlair.ir</title>
+    <meta name="description" content="Detailed research information about MGF-02 formula development and fungal biotechnology innovations.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-green: #2D5A27;
+            --secondary-green: #4A7C59;
+            --light-green: #8FBC8F;
+            --cream: #F5F5DC;
+            --soft-yellow: #F0E68C;
+            --dark-gray: #2C3E50;
+            --medium-gray: #5D6D7E;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5dc 100%);
+            overflow-x: hidden;
+        }
+        
+        body.rtl {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .research-bg {
+            background-image: url('./resources/2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .floating-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .loaded {
+            opacity: 1;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .research-section {
+            border-left: 4px solid var(--primary-green);
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,245,220,0.8));
+        }
+        
+        .problem-card {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border-left: 4px solid #dc2626;
+        }
+        
+        .solution-card {
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="opacity-0">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="./resources/logo.png" alt="MycoFlair Logo" class="h-10 w-auto">
+                    <span class="text-xl font-bold gradient-text">MycoFlair.ir</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-green-700">Home</a>
+                    <a href="research.html" class="nav-link text-green-700 font-semibold">Research</a>
+                    <a href="team.html" class="nav-link text-gray-700 hover:text-green-700">Team</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-green-700">Contact</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="flex items-center space-x-2 border-l border-gray-300 pl-4">
+                        <button data-lang="en" class="px-3 py-1 text-sm font-medium rounded-md bg-green-100 text-green-700 active">EN</button>
+                        <button data-lang="fa" class="px-3 py-1 text-sm font-medium rounded-md text-gray-500 hover:bg-green-100 hover:text-green-700">FA</button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden fixed top-16 right-0 w-64 h-screen bg-white shadow-lg p-6">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-green-700">Home</a>
+                <a href="research.html" class="nav-link text-green-700 font-semibold">Research</a>
+                <a href="team.html" class="nav-link text-gray-700 hover:text-green-700">Team</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-green-700">Contact</a>
+                
+                <!-- Mobile Language Switcher -->
+                <div class="flex items-center space-x-2 pt-4 border-t border-gray-200">
+                    <button data-lang="en" class="px-3 py-1 text-sm font-medium rounded-md bg-green-100 text-green-700 active">EN</button>
+                    <button data-lang="fa" class="px-3 py-1 text-sm font-medium rounded-md text-gray-500 hover:bg-green-100 hover:text-green-700">FA</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-16 overflow-hidden">
+        <div class="research-bg absolute inset-0 z-0"></div>
+        <div class="absolute inset-0 bg-black/50 z-10"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-on-scroll">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">Research & Development</h1>
+                <p class="text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+                    Breakthrough innovations in fungal biotechnology through advanced nutrient formulation and substrate-independent cultivation methods.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">Project Overview</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <div class="research-section floating-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-green-800 mb-6">MGF-02 Formula Development</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            The MGF-02 formula represents a revolutionary advancement in fungal cultivation technology, developed through years of intensive research and field testing. This proprietary nutrient solution enables complete mycelium growth on artificial substrates without traditional compost requirements.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed mb-6">
+                            Our breakthrough formulation incorporates natural anti-contamination agents that provide inherent resistance to competitive fungi and bacterial pathogens, reducing crop loss by up to 90% compared to conventional methods.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-green-800">Research Status</p>
+                                <p class="text-sm text-gray-600">Successful prototype validation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="text-3xl font-bold text-green-600 mb-2">70%</div>
+                            <p class="text-sm text-gray-600">Water Reduction</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="text-3xl font-bold text-green-600 mb-2">90%</div>
+                            <p class="text-sm text-gray-600">Contamination Reduction</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="text-3xl font-bold text-green-600 mb-2">5+</div>
+                            <p class="text-sm text-gray-600">Mushroom Species</p>
+                        </div>
+                        <div class="stat-item">
+                            <div class="text-3xl font-bold text-green-600 mb-2">3</div>
+                            <p class="text-sm text-gray-600">Years Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Industry Problems -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-red-600 mb-4">Current Industry Challenges</h2>
+                <div class="w-24 h-1 bg-red-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Traditional mushroom cultivation faces significant limitations that restrict scalability, sustainability, and application in extreme environments.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="problem-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-red-800 mb-3">High Water Consumption</h3>
+                    <p class="text-gray-700 text-sm">Traditional compost-based cultivation requires extensive water resources, making it unsuitable for water-scarce regions.</p>
+                </div>
+                
+                <div class="problem-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.467-.881-6.08-2.33m0 0l-.431-.431A7.963 7.963 0 013 12a7.963 7.963 0 012.489-5.739m0 0l.431-.431A7.962 7.962 0 0112 3c2.34 0 4.467.881 6.08 2.33m0 0l.431.431A7.963 7.963 0 0121 12a7.963 7.963 0 01-2.489 5.739m0 0l-.431.431"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-red-800 mb-3">Contamination Risk</h3>
+                    <p class="text-gray-700 text-sm">Organic substrates are highly susceptible to fungal and bacterial contamination, leading to significant crop losses.</p>
+                </div>
+                
+                <div class="problem-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-red-800 mb-3">Infrastructure Dependency</h3>
+                    <p class="text-gray-700 text-sm">Requires extensive infrastructure for compost preparation, sterilization, and controlled environments.</p>
+                </div>
+                
+                <div class="problem-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-red-800 mb-3">Limited Environmental Range</h3>
+                    <p class="text-gray-700 text-sm">Cannot be implemented in extreme environments like deserts, space stations, or resource-scarce regions.</p>
+                </div>
+                
+                <div class="problem-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-red-800 mb-3">High Production Costs</h3>
+                    <p class="text-gray-700 text-sm">Expensive raw materials, transportation, and energy costs for sterilization and climate control.</p>
+                </div>
+                
+                <div class="problem-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-red-800 mb-3">Waste Management Issues</h3>
+                    <p class="text-gray-700 text-sm">Spent substrate disposal creates environmental challenges and additional operational costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MGF-02 Solution -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">MGF-02 Solution</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+                <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+                    Our revolutionary formula addresses all major industry challenges through integrated nutrient delivery, contamination resistance, and substrate versatility.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="solution-card floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-800 mb-4 text-center">Advanced Nutrient Delivery</h3>
+                    <p class="text-gray-700 text-center mb-6">Optimized nutrient composition ensures rapid mycelium development and high-yield fruiting on any artificial substrate.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Complete macro/micro nutrient profile</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>pH balanced for optimal absorption</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Extended nutrient release formula</li>
+                    </ul>
+                </div>
+                
+                <div class="solution-card floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-800 mb-4 text-center">Built-in Contamination Resistance</h3>
+                    <p class="text-gray-700 text-center mb-6">Natural antimicrobial compounds prevent competitive fungi and bacterial growth without synthetic chemicals.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>90% reduction in contamination rates</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Eliminates need for sterilization</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Safe for food production</li>
+                    </ul>
+                </div>
+                
+                <div class="solution-card floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-800 mb-4 text-center">Universal Substrate Compatibility</h3>
+                    <p class="text-gray-700 text-center mb-6">Works effectively on various artificial substrates including polyester, perlite, rockwool, and lunar soil simulations.</p>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Synthetic and organic substrates</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Space agriculture applications</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-green-600 rounded-full mr-2"></span>Urban farming systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">Technical Specifications</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="animate-on-scroll">
+                    <div class="floating-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-green-800 mb-6">Composition Analysis</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                <span class="font-medium text-gray-700">Organic Nitrogen Sources</span>
+                                <span class="text-green-600 font-semibold">25-30%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                <span class="font-medium text-gray-700">Mineral Complex</span>
+                                <span class="text-green-600 font-semibold">15-20%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                <span class="font-medium text-gray-700">Growth Enhancers</span>
+                                <span class="text-green-600 font-semibold">8-12%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                <span class="font-medium text-gray-700">Antimicrobial Agents</span>
+                                <span class="text-green-600 font-semibold">3-5%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-gray-200">
+                                <span class="font-medium text-gray-700">pH Stabilizers</span>
+                                <span class="text-green-600 font-semibold">2-4%</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <span class="font-medium text-gray-700">Carrier Medium</span>
+                                <span class="text-green-600 font-semibold">Balance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="floating-card rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-green-800 mb-6">Performance Metrics</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-700">Growth Rate Improvement</span>
+                                    <span class="text-green-600 font-bold">+150%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-700">Contamination Resistance</span>
+                                    <span class="text-green-600 font-bold">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-700">Water Efficiency</span>
+                                    <span class="text-green-600 font-bold">70%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="font-medium text-gray-700">Yield Consistency</span>
+                                    <span class="text-green-600 font-bold">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">Applications</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="floating-card rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Industrial Production</h3>
+                    <p class="text-sm text-gray-600">Large-scale mushroom cultivation facilities</p>
+                </div>
+                
+                <div class="floating-card rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Space Agriculture</h3>
+                    <p class="text-sm text-gray-600">NASA and ESA space farming programs</p>
+                </div>
+                
+                <div class="floating-card rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Urban Farming</h3>
+                    <p class="text-sm text-gray-600">Controlled environment agriculture</p>
+                </div>
+                
+                <div class="floating-card rounded-xl p-6 text-center animate-on-scroll">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2">Animal Feed</h3>
+                    <p class="text-sm text-gray-600">Sustainable protein production</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-r from-green-600 to-green-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Transform Your Cultivation Process?</h2>
+                <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
+                    Partner with us to implement MGF-02 technology in your production facility or research program.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="inline-block bg-white text-green-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                        Partner With Us
+                    </a>
+                    <a href="team.html" class="inline-block border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-green-600 transition-all duration-300">
+                        Meet Our Team
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <img src="./resources/logo.png" alt="MycoFlair Logo" class="h-8 w-auto">
+                    <span class="text-xl font-bold">MycoFlair.ir</span>
+                </div>
+                <p class="text-gray-400 mb-4">© 2024 MycoFlair Research & Innovation Team. All rights reserved.</p>
+                <p class="text-sm text-gray-500">Innovating the Future of Fungal Biotechnology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+</html>

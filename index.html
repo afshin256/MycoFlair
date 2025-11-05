@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MycoFlair.ir - Innovating the Future of Fungal Biotechnology</title>
+    <meta name="description" content="MycoFlair Research & Innovation Team - Leading breakthrough research in fungal cultivation technology with revolutionary MGF-02 formula.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-green: #2D5A27;
+            --secondary-green: #4A7C59;
+            --light-green: #8FBC8F;
+            --cream: #F5F5DC;
+            --soft-yellow: #F0E68C;
+            --dark-gray: #2C3E50;
+            --medium-gray: #5D6D7E;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5dc 100%);
+            overflow-x: hidden;
+        }
+        
+        body.rtl {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .hero-bg {
+            background-image: url('./resources/1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .floating-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--primary-green); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .counter {
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        
+        .loaded {
+            opacity: 1;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,245,220,0.8));
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .market-stat {
+            background: linear-gradient(135deg, var(--soft-yellow), rgba(240,230,140,0.7));
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="opacity-0">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="./resources/logo.png" alt="MycoFlair Logo" class="h-10 w-auto">
+                    <span class="text-xl font-bold gradient-text">MycoFlair.ir</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" data-scroll class="nav-link text-gray-700 hover:text-green-700" data-translate="navHome">Home</a>
+                    <a href="research.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navResearch">Research</a>
+                    <a href="team.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navTeam">Team</a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navContact">Contact</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="flex items-center space-x-2 border-l border-gray-300 pl-4">
+                        <button data-lang="en" class="px-3 py-1 text-sm font-medium rounded-md bg-green-100 text-green-700 active">EN</button>
+                        <button data-lang="fa" class="px-3 py-1 text-sm font-medium rounded-md text-gray-500 hover:bg-green-100 hover:text-green-700">FA</button>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden fixed top-16 right-0 w-64 h-screen bg-white shadow-lg p-6">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" data-scroll class="nav-link text-gray-700 hover:text-green-700" data-translate="navHome">Home</a>
+                <a href="research.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navResearch">Research</a>
+                <a href="team.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navTeam">Team</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navContact">Contact</a>
+                
+                <!-- Mobile Language Switcher -->
+                <div class="flex items-center space-x-2 pt-4 border-t border-gray-200">
+                    <button data-lang="en" class="px-3 py-1 text-sm font-medium rounded-md bg-green-100 text-green-700 active">EN</button>
+                    <button data-lang="fa" class="px-3 py-1 text-sm font-medium rounded-md text-gray-500 hover:bg-green-100 hover:text-green-700">FA</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="hero-bg absolute inset-0 z-0"></div>
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-on-scroll">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 typewriter" data-translate="heroTitle">
+                    MycoFlair Research & Innovation Team
+                </h1>
+                <p class="text-xl md:text-2xl text-green-100 mb-4 font-medium" data-translate="heroTagline">
+                    Innovating the Future of Fungal Biotechnology
+                </p>
+                <p class="text-lg text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed" data-translate="heroDescription">
+                    Leading breakthrough research in fungal cultivation technology with our revolutionary MGF-02 formula for sustainable mushroom production.
+                </p>
+                <a href="research.html" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105" data-translate="heroButton">
+                    Explore Our Research
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="executiveTitle">Executive Summary</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <div class="floating-card rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-green-800 mb-4" data-translate="projectTitle">Project: MGF-02 Formula Development</h3>
+                        <p class="text-gray-700 leading-relaxed mb-6" data-translate="projectDesc">
+                            Advanced nutrient solution for cultivating edible and medicinal mushrooms on artificial substrates with anti-contamination properties.
+                        </p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-green-800">Ready for Commercialization</p>
+                                <p class="text-sm text-gray-600">Trade Secret Available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="animate-on-scroll">
+                    <div class="market-stat">
+                        <div class="counter text-4xl font-bold mb-2" data-target="60">0</div>
+                        <p class="text-lg font-medium text-gray-700 mb-2">Billion USD</p>
+                        <p class="text-sm text-gray-600" data-translate="marketSize">Global mushroom market value (2024)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Achievements -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="achievementsTitle">Key Achievements</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement1">Complete mycelium growth without compost</h3>
+                    <p class="text-gray-600 text-sm">Revolutionary breakthrough in substrate-independent cultivation</p>
+                </div>
+                
+                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement2">Significant reduction in water consumption</h3>
+                    <p class="text-gray-600 text-sm">Up to 70% reduction in water usage compared to traditional methods</p>
+                </div>
+                
+                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement3">Natural resistance to contaminants</h3>
+                    <p class="text-gray-600 text-sm">Built-in anti-contamination properties reduce crop loss by 90%</p>
+                </div>
+                
+                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement4">Successful lunar soil simulation tests</h3>
+                    <p class="text-gray-600 text-sm">Validated for space agriculture applications in extreme environments</p>
+                </div>
+                
+                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement5">Sustainable feed production from waste</h3>
+                    <p class="text-gray-600 text-sm">Circular economy solution converting waste to high-protein animal feed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Advantage -->
+    <section class="py-20 bg-gradient-to-br from-green-50 to-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="advantageTitle">Competitive Advantage</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage1">Unique formula combining nutrition, growth environment, and anti-contamination</h3>
+                            <p class="text-gray-600">First integrated solution addressing all critical aspects of mushroom cultivation in a single formula.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage2">Suitable for space agriculture and controlled environments</h3>
+                            <p class="text-gray-600">Validated for extreme environments including lunar soil simulations and closed-system agriculture.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage3">Commercial trade secret potential</h3>
+                            <p class="text-gray-600">Proprietary formula eligible for trade secret protection and confidential composition patents.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="floating-card rounded-xl p-8 animate-on-scroll">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage4">Versatile for multiple mushroom species</h3>
+                            <p class="text-gray-600">Compatible with various edible and medicinal mushroom species including button, oyster, and specialty varieties.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Analysis -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="marketTitle">Target Market</h2>
+                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center animate-on-scroll">
+                    <div class="counter text-5xl font-bold text-green-600 mb-2" data-target="100">0</div>
+                    <p class="text-lg font-medium text-gray-700" data-translate="marketSize">Billion USD by 2030</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <div class="counter text-5xl font-bold text-green-600 mb-2" data-target="15">0</div>
+                    <p class="text-lg font-medium text-gray-700">% Annual Growth Rate</p>
+                </div>
+                <div class="text-center animate-on-scroll">
+                    <div class="counter text-5xl font-bold text-green-600 mb-2" data-target="50">0</div>
+                    <p class="text-lg font-medium text-gray-700">+ Potential Partners</p>
+                </div>
+            </div>
+            
+            <div class="floating-card rounded-2xl p-8 animate-on-scroll">
+                <h3 class="text-2xl font-bold text-green-800 mb-6 text-center" data-translate="marketTitle">Target Market Segments</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-green-800 mb-2">Industrial Producers</h4>
+                        <p class="text-sm text-gray-600">Large-scale mushroom cultivation companies</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-green-800 mb-2">Space Research Centers</h4>
+                        <p class="text-sm text-gray-600">NASA, ESA, and space agriculture programs</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-green-800 mb-2">Urban Farming Systems</h4>
+                        <p class="text-sm text-gray-600">Controlled environment agriculture</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-gradient-to-r from-green-600 to-green-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Revolutionize Mushroom Cultivation?</h2>
+                <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
+                    Join us in transforming the future of fungal biotechnology with our breakthrough MGF-02 formula.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="research.html" class="inline-block bg-white text-green-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                        Explore Research Details
+                    </a>
+                    <a href="contact.html" class="inline-block border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-green-600 transition-all duration-300">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-3 mb-4">
+                    <img src="./resources/logo.png" alt="MycoFlair Logo" class="h-8 w-auto">
+                    <span class="text-xl font-bold">MycoFlair.ir</span>
+                </div>
+                <p class="text-gray-400 mb-4" data-translate="copyright">© 2024 MycoFlair Research & Innovation Team. All rights reserved.</p>
+                <p class="text-sm text-gray-500">Innovating the Future of Fungal Biotechnology</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
+</body>
+</html>
