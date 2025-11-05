@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MycoFlair | تیم تحقیقاتی و توسعه مایکوفِلِر</title>
+  <meta name="description" content="MycoFlair — Innovating the Future of Fungal Biotechnology. MGF-02 برای پرورش قارچ روی بسترهای مصنوعی" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- i18next -->
+  <script src="https://unpkg.com/i18next@21.6.14/dist/umd/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-browser-languagedetector@6.1.4/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+  <script src="https://unpkg.com/i18next-http-backend@1.4.5/dist/umd/i18nextHttpBackend.min.js"></script>
+  <link rel="stylesheet" href="assets/aos-custom.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-gray-800 antialiased">
+  <!-- NAV -->
+  <header class="fixed w-full bg-white/70 backdrop-blur z-40 shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-300 to-sky-300 flex items-center justify-center font-semibold text-slate-900">MF</div>
+        <div>
+          <h1 id="brand-title" class="text-lg font-bold">MycoFlair.ir</h1>
+          <p id="brand-sub" class="text-sm text-gray-500">تیم تحقیقاتی و توسعه مایکوفِلِر</p>
+        </div>
+      </div>
+      <nav class="flex items-center gap-4">
+        <a class="text-sm text-gray-600 hover:text-slate-900" href="#about" data-i18n="nav.about">درباره</a>
+        <a class="text-sm text-gray-600 hover:text-slate-900" href="#advantages" data-i18n="nav.advantages">مزیت‌ها</a>
+        <a class="text-sm text-gray-600 hover:text-slate-900" href="#team" data-i18n="nav.team">تیم</a>
+        <a class="text-sm text-gray-600 hover:text-slate-900" href="#contact" data-i18n="nav.contact">تماس</a>
+        <button id="lang-switch" class="ml-2 px-3 py-2 rounded-lg border border-slate-200 text-sm">EN</button>
+        <a href="mailto:info@mycoflair.com" class="ml-2 bg-green-400 text-slate-900 px-3 py-2 rounded-lg text-sm font-semibold" data-i18n="nav.collab">درخواست همکاری</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-28">
+    <!-- HERO -->
+    <section id="hero" class="bg-gradient-to-b from-white to-slate-50">
+      <div class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div data-aos="fade-right">
+          <h2 id="hero-title" class="text-3xl md:text-4xl font-extrabold leading-tight">MycoFlair — Innovating the Future of Fungal Biotechnology</h2>
+          <p id="hero-tag" class="text-green-500 font-semibold mt-3">«نوآوری در آینده‌ی زیست‌فناوری قارچ‌ها»</p>
+          <p id="hero-lead" class="text-gray-600 mt-6">فرمول <strong>MGF-02</strong> نسخه پیشرفته‌ای از پژوهش‌های ماست که رشد میسلیوم را بر روی بسترهای مصنوعی و خنثی بدون نیاز به کمپوست ممکن می‌سازد — همراه با خاصیت ضدآلودگی و پایداری بالا.</p>
+
+          <div class="mt-6 flex gap-3">
+            <a href="#contact" class="bg-green-400 hover:bg-green-500 text-slate-900 px-4 py-2 rounded-lg font-semibold" data-i18n="cta.contact">درخواست همکاری</a>
+            <button id="learn-btn" class="px-4 py-2 border border-slate-200 rounded-lg text-sm" data-i18n="cta.learn">بیشتر بدانید</button>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3 text-sm">
+            <span class="px-3 py-1 bg-slate-100 rounded-full text-slate-700">کشت بدون کمپوست</span>
+            <span class="px-3 py-1 bg-slate-100 rounded-full text-slate-700">ضدآلودگی</span>
+            <span class="px-3 py-1 bg-slate-100 rounded-full text-slate-700">کشاورزی فضایی</span>
+            <span class="px-3 py-1 bg-slate-100 rounded-full text-slate-700">پسماند→خوراک دام</span>
+          </div>
+        </div>
+
+        <div data-aos="fade-left" class="bg-white rounded-2xl p-6 shadow">
+          <h3 class="font-bold text-lg mb-3" data-i18n="hero.summaryTitle">خلاصه اجرایی — Executive Summary</h3>
+          <div class="space-y-3 text-sm text-gray-600">
+            <div><strong>عنوان طرح:</strong> <span id="proj-title">ساخت و توسعه فرمول MGF-02 ...</span></div>
+            <div><strong data-i18n="hero.status">وضعیت:</strong> نمونه موفق آزمایشگاهی</div>
+            <div><strong data-i18n="hero.test">شواهد:</strong> آزمایش محدود در خاک شبیه‌سازی‌شده ماه</div>
+            <div><strong data-i18n="hero.app">کاربرد:</strong> کشاورزی شهری، صنعتی و فضایی</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave separator -->
+    <div class="w-full overflow-hidden">
+      <svg class="w-full" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg"><path fill="#f8fafc" d="M0,64L1440,16L1440,80L0,80Z"></path></svg>
+    </div>
+
+    <!-- About -->
+    <section id="about" class="bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up">
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+          <div class="md:col-span-2">
+            <h3 class="text-2xl font-bold mb-3" data-i18n="about.title">معرفی و هدف پروژه — چکیده</h3>
+            <p id="about-text" class="text-gray-600 leading-relaxed">
+              فرمول MGF-01 حاصل چند سال تحقیق و آزمایش میدانی بر روی فرمولاسیون محلول‌مغذی برای پرورش قارچ... (متن کامل در فایل)
+            </p>
+            <div class="mt-6 grid sm:grid-cols-2 gap-4">
+              <div class="p-5 border rounded-lg">
+                <h4 class="font-semibold" data-i18n="about.goalTitle">هدف اصلی</h4>
+                <p class="text-gray-600 text-sm" data-i18n="about.goalText">ایجاد محیطی پایدار و خنثی برای رشد میسلیوم در بسترهای مصنوعی</p>
+              </div>
+              <div class="p-5 border rounded-lg">
+                <h4 class="font-semibold" data-i18n="about.impactTitle">تأثیر</h4>
+                <p class="text-gray-600 text-sm" data-i18n="about.impactText">قابلیت کاربرد در پروژه‌های کشاورزی فضایی و کاهش مصرف منابع</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="p-5 border rounded-lg">
+            <h4 class="font-semibold mb-2" data-i18n="about.quickTitle">نکات سریع</h4>
+            <ul class="text-gray-600 text-sm space-y-2">
+              <li data-i18n="about.quick1">رشد بدون کمپوست</li>
+              <li data-i18n="about.quick2">مقاومت در برابر آلودگی</li>
+              <li data-i18n="about.quick3">قابل استفاده در بسترهای غیرآلی</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Slider -->
+    <section id="achievements" class="bg-slate-50">
+      <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-6" data-i18n="ach.title">دستاوردهای کلیدی</h3>
+        <div class="slider relative">
+          <button class="prev absolute left-2 top-2 bg-white/90 p-2 rounded-lg shadow" aria-label="prev">◀</button>
+          <div class="cards flex gap-4 overflow-x-auto scroll-snap-x snap-mandatory py-4">
+            <article class="card min-w-[260px] bg-white border rounded-lg p-4 shadow">
+              <h4 class="font-semibold">رشد کامل میسلیوم</h4>
+              <p class="text-gray-600 text-sm">رشد میسلیوم قارچ دکمه‌ای و صدفی بر روی بسترهای غیرآلی بدون کمپوست.</p>
+            </article>
+            <article class="card min-w-[260px] bg-white border rounded-lg p-4 shadow">
+              <h4 class="font-semibold">برداشت محصول</h4>
+              <p class="text-gray-600 text-sm">برداشت موفق محصول خوراکی و دارویی در آزمایش‌های میدانی.</p>
+            </article>
+            <article class="card min-w-[260px] bg-white border rounded-lg p-4 shadow">
+              <h4 class="font-semibold">کاهش مصرف آب</h4>
+              <p class="text-gray-600 text-sm">کاهش چشمگیر مصرف آب و هزینه‌های تولید و ترابری.</p>
+            </article>
+            <article class="card min-w-[260px] bg-white border rounded-lg p-4 shadow">
+              <h4 class="font-semibold">مقاومت طبیعی</h4>
+              <p class="text-gray-600 text-sm">قابلیت مقاومت در برابر قارچ‌های رقیب و کپک‌ها.</p>
+            </article>
+            <article class="card min-w-[260px] bg-white border rounded-lg p-4 shadow">
+              <h4 class="font-semibold">آزمایش ماه</h4>
+              <p class="text-gray-600 text-sm">آزمایش موفق در خاک شبیه‌سازی‌شده‌ی ماه (همکاری دانشگاه صنعتی شریف).</p>
+            </article>
+            <article class="card min-w-[260px] bg-white border rounded-lg p-4 shadow">
+              <h4 class="font-semibold">خوراک دام از پسماند</h4>
+              <p class="text-gray-600 text-sm">استفاده از پسماند جهت تولید خوراک غنی برای دام و ماهی.</p>
+            </article>
+          </div>
+          <button class="next absolute right-2 top-2 bg-white/90 p-2 rounded-lg shadow" aria-label="next">▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages -->
+    <section id="advantages" class="bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-4" data-i18n="adv.title">مزیت رقابتی MGF-02</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">ترکیب سه‌گانه</h4>
+            <p class="text-gray-600 text-sm">محیط رشد، غذا و ضدآلودگی در یک محصول واحد.</p>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">پتانسیل فضایی</h4>
+            <p class="text-gray-600 text-sm">طراحی مناسب برای پروژه‌های کشاورزی فضایی و زیست‌پشتیبان.</p>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">حفاظت IP</h4>
+            <p class="text-gray-600 text-sm">قابلیت نگهداری به‌عنوان راز تجاری و ثبت ترکیب محرمانه.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market -->
+    <section id="market" class="bg-slate-50">
+      <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-4" data-i18n="market.title">بازار هدف</h3>
+        <p class="text-gray-600 mb-6">بازار جهانی قارچ‌های خوراکی و دارویی در سال ۲۰۲۴ بیش از ۶۰ میلیارد دلار ارزش‌گذاری شده و پیش‌بینی می‌شود تا سال ۲۰۳۰ به بیش از ۱۰۰ میلیارد دلار برسد.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">مشتریان بالقوه</h4>
+            <ul class="text-gray-600 text-sm list-disc ml-5">
+              <li>شرکت‌های تولید قارچ صنعتی</li>
+              <li>مراکز تحقیقاتی فضایی و زیستی</li>
+              <li>تولیدکنندگان بسترهای کشت مصنوعی</li>
+              <li>تولید کنندگان خوراک دام و ماهی</li>
+            </ul>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">مدل تجاری</h4>
+            <p class="text-gray-600 text-sm">فروش تحت راز تجاری (Trade Secret Sale)؛ فروش فرمول و دانش فنی به شرکت معتبر یا واگذاری حق بهره‌برداری.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-6" data-i18n="team.title">تیم اجرایی</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">ISMAEEL KHORSHIDI</h4>
+            <p class="text-gray-600 text-sm">مجری پروژه - پژوهشگر ارشد</p>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">SAEID KHORSHIDI</h4>
+            <p class="text-gray-600 text-sm">همکار پژوهشی</p>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">AMIR MARANDI</h4>
+            <p class="text-gray-600 text-sm">مدیر فنی — تماس: +98 912 309 2855</p>
+          </div>
+          <div class="p-6 border rounded-lg">
+            <h4 class="font-semibold">MASOOME KHANI</h4>
+            <p class="text-gray-600 text-sm">تحقیق و توسعه</p>
+          </div>
+          <div class="p-6 border rounded-lg md:col-span-2">
+            <h4 class="font-semibold">محل انجام پروژه</h4>
+            <p class="text-gray-600 text-sm">IRAN — تیم تحقیقاتی مایکوفِلِر</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="bg-white">
+      <div class="max-w-6xl mx-auto px-6 py-14" data-aos="fade-up">
+        <h3 class="text-2xl font-bold mb-4" data-i18n="contact.title">نیازمندی‌ها و پیشنهاد همکاری</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-6 border rounded-lg">
+            <p class="text-gray-600">در فاز کنونی، پروژه آماده انتقال دانش فنی و مذاکره با سرمایه‌گذاران یا خریداران بالقوه است. پیشنهادها: خرید کامل دانش فنی، مشارکت R&D، تست میدانی مشترک.</p>
+            <p class="text-gray-600 mt-4">برای ارائه اطلاعات فنی محرمانه لطفاً NDA را پیش از ارسال مدارک امضا نمایید.</p>
+            <p class="text-gray-600 mt-4"><strong>تماس مستقیم:</strong></p>
+            <p class="text-gray-600">ایمیل: <a class="text-green-500" href="mailto:info@mycoflair.com">info@mycoflair.com</a></p>
+            <p class="text-gray-600">تلفن: <a href="tel:+989123092855" class="text-slate-700">+98 912 309 2855</a> — AMIR MARANDI</p>
+          </div>
+          <div class="p-6 border rounded-lg flex flex-col items-center justify-center">
+            <h4 class="font-semibold mb-2">درخواست همکاری محرمانه</h4>
+            <p class="text-gray-600 text-center mb-4">برای ارتباط محرمانه، دکمه زیر پنجره ایمیل شما را باز می‌کند.</p>
+            <a class="bg-green-400 text-slate-900 px-4 py-2 rounded-lg font-semibold" href="mailto:info@mycoflair.com?subject=Request%20for%20Confidential%20Discussion%20-%20MycoFlair">درخواست همکاری محرمانه</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50">
+      <div class="max-w-6xl mx-auto px-6 py-8 text-center text-sm text-gray-500">
+        © 2025 MycoFlair Research & Innovation Team — All rights reserved. • info@mycoflair.com • +98 912 309 2855
+      </div>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="lang.js"></script>
+  <script>
+    AOS.init({duration:800, once:true});
+
+    // slider controls
+    document.querySelectorAll('.next').forEach(btn=>{
+      btn.addEventListener('click', ()=> {
+        const cards = btn.parentElement.querySelector('.cards');
+        cards.scrollBy({left:300, behavior:'smooth'});
+      });
+    });
+    document.querySelectorAll('.prev').forEach(btn=>{
+      btn.addEventListener('click', ()=> {
+        const cards = btn.parentElement.querySelector('.cards');
+        cards.scrollBy({left:-300, behavior:'smooth'});
+      });
+    });
+
+    // language switch button
+    const langBtn = document.getElementById('lang-switch');
+    langBtn.addEventListener('click', ()=>{
+      const current = document.documentElement.lang;
+      if(current === 'fa'){ setLanguage('en'); } else { setLanguage('fa'); }
+    });
+  </script>
+</body>
+</html>

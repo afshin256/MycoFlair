@@ -1,0 +1,5 @@
+/* style.css - additional styling beyond Tailwind for polish */
+:root{--accent: #10b981; --accent-2: #7dd3fc}
+header a { transition: all .15s ease }
+.slider .cards::-webkit-scrollbar { height:10px; }
+.slider .cards::-webkit-scrollbar-thumb { background: rgba(15,23,42,0.2); border-radius:8px; }
