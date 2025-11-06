@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MycoFlair.ir - MycoFlair Research & Innovation Team</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-green: #4CAF50;
@@ -16,6 +17,7 @@
             --text-light: #F5F5F5;
             --shadow: 0 8px 32px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
+            --border-radius: 20px;
         }
         * {
             margin: 0;
@@ -23,13 +25,14 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', 'Vazirmatn', sans-serif;
             background: linear-gradient(135deg, var(--cream) 0%, var(--light-yellow) 100%);
             color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        /* Header Styles */
+        /* Header */
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -43,68 +46,49 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo-container {
+        .left-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .right-nav {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
         .logo-placeholder {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: url('1.jpg') center/cover no-repeat;
             border-radius: 50%;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .site-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(45deg, var(--dark-green), var(--primary-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        /* Hamburger Menu */
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
+            z-index: 1001;
         }
         .hamburger span {
-            width: 25px;
+            width: 28px;
             height: 3px;
             background: var(--text-dark);
-            margin: 3px 0;
+            margin: 4px 0;
             transition: var(--transition);
             border-radius: 2px;
-        }
-        .nav-links {
-            display: flex;
-            gap: 1rem;
-            margin: 0 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            max-width: 800px;
-        }
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: var(--transition);
-            white-space: nowrap;
-            font-size: 0.9rem;
-        }
-        .nav-link:hover {
-            background: var(--primary-green);
-            color: white;
-            transform: translateY(-2px);
         }
         .language-switch {
             background: var(--primary-green);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 25px;
             cursor: pointer;
             font-weight: 600;
@@ -119,31 +103,40 @@
         .mobile-menu {
             display: none;
             position: absolute;
-            top: 70px;
+            top: 80px;
             right: 2rem;
             background: white;
             box-shadow: var(--shadow);
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 1rem;
             z-index: 999;
             flex-direction: column;
             gap: 0.5rem;
-            min-width: 200px;
+            min-width: 220px;
+            overflow: hidden;
         }
         .mobile-menu.active {
             display: flex;
+            animation: fadeIn 0.3s ease-out;
         }
         .mobile-menu .nav-link {
-            padding: 0.75rem;
+            padding: 0.8rem 1rem;
             text-align: center;
             border-radius: 8px;
             width: 100%;
-            box-sizing: border-box;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .mobile-menu .nav-link:hover {
+            background: var(--light-green);
+            color: white;
         }
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('2.jpg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('2.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -155,29 +148,29 @@
             margin-top: 80px;
         }
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             padding: 2rem;
             animation: slideUp 1s ease-out;
         }
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         .hero h2 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
             font-style: italic;
         }
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-        /* Section Styles */
+        /* Sections */
         .section {
-            padding: 6rem 2rem;
+            padding: 7rem 2rem;
             position: relative;
             overflow: hidden;
         }
@@ -194,122 +187,98 @@
             z-index: 2;
         }
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
             text-align: center;
             color: var(--dark-green);
             position: relative;
         }
-        /* ❌ خط زیر تیتر حذف شد — بر اساس درخواست قبلی */
-        /* .section-title::after { ... } — حذف شده */
-
-        /* ✅ Cards — بازگشت به responsive grid اصلی */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* ✅ اصلی */
-            gap: 2rem;
-            margin-top: 2rem;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-green);
+            margin: 1rem auto 0;
         }
-        .card {
+        /* Cards */
+        .card, .team-card {
             background: white;
-            border-radius: 20px;
+            border-radius: var(--border-radius);
             overflow: hidden;
             box-shadow: var(--shadow);
             transform: translateY(50px);
             opacity: 0;
             animation: slideUp 0.6s ease-out forwards;
             transition: var(--transition);
-            /* ✅ border سبز ثابت — بدون غیب‌شدگی */
             border: 2px solid var(--primary-green);
             will-change: transform;
         }
-        .card:hover {
+        .card:hover, .team-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            /* ❌ بدون نئون */
         }
-        .card-image {
-            height: 180px;
+        .card-image, .team-card-image {
+            height: 220px;
             background-size: cover;
             background-position: center;
+            transition: var(--transition);
         }
-        .card-content {
-            padding: 1.5rem;
+        .card:hover .card-image, .team-card:hover .team-card-image {
+            transform: scale(1.05);
         }
-        .card h3 {
+        .team-card-image {
+            height: 240px;
+        }
+        .card-content, .team-card-content {
+            padding: 1.8rem;
+        }
+        .card h3, .team-card h4 {
             color: var(--dark-green);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem;
         }
-        .card p, .card li {
+        .team-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+        .card p, .card li, .team-card p {
             color: var(--text-dark);
             line-height: 1.8;
+            font-size: 1.1rem;
         }
-
-        /* Team Section — فقط اینجا 2 ستون */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        /* Team Section */
         .team-section {
             background: linear-gradient(135deg, var(--light-yellow) 0%, var(--cream) 100%);
         }
         .team-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* ✅ فقط برای تیم — 2 ستون در دسکتاپ */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-        .team-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transform: translateY(50px);
-            opacity: 0;
-            animation: slideUp 0.6s ease-out forwards;
-            transition: var(--transition);
-            border: 2px solid var(--primary-green);
-            will-change: transform;
-        }
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        .team-card-image {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-        }
-        .team-card-content {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        .team-card h4 {
-            margin-bottom: 0.5rem;
-            color: var(--dark-green);
-            font-size: 1.2rem;
-        }
-        .team-card p {
-            margin: 0.3rem 0;
-            font-size: 0.95rem;
-        }
-
-        /* Contact Section — ✅ فونت متن تماس مشکی */
+        /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
             color: white;
         }
         .contact-info {
-            max-width: 600px;
-            margin: 2rem auto 0;
+            max-width: 700px;
+            margin: 3rem auto 0;
             text-align: center;
         }
         .contact-info p {
-            margin: 0.8rem 0;
-            font-size: 1.2rem;
-            /* ❌ بک‌گراند سفید حذف شد */
-            padding: 0.5rem 1rem;
+            margin: 1rem 0;
+            font-size: 1.3rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
             font-weight: 500;
         }
-        /* ✅ جمله تماس (هم در انگلیسی و هم فارسی) مشکی */
         #contact-intro {
             color: #000 !important;
         }
@@ -318,92 +287,77 @@
             color: #000 !important;
             font-weight: 600;
         }
-
-        /* Footer — ✅ 2025 */
+        /* Footer */
         .footer {
             background: var(--dark-green);
             color: white;
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 3rem;
+            margin-top: 5rem;
         }
         .footer p {
-            margin: 0.5rem 0;
+            margin: 0.6rem 0;
+            font-size: 1.1rem;
         }
-
         /* Animations */
         @keyframes slideUp {
             from { transform: translateY(50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         /* Responsive */
         @media (max-width: 768px) {
-            .hamburger { display: flex; }
-            .nav-links { display: none; }
-            .hero h1 { font-size: 2rem; }
-            .section-title { font-size: 1.8rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
             .header { padding: 1rem; }
-            .site-title { font-size: 1.2rem; }
-            .language-switch { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
+            .site-title { font-size: 1.4rem; }
+            .language-switch { padding: 0.5rem 1rem; font-size: 1rem; }
+            .cards-container { grid-template-columns: 1fr; }
+            .team-cards { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.6rem; }
-            .section { padding: 4rem 1rem; }
-            .section-title { font-size: 1.6rem; }
-            /* ✅ در موبایل، تیم یک ستونه */
-            .team-cards {
-                grid-template-columns: 1fr;
-            }
+            .hero h1 { font-size: 2rem; }
+            .section { padding: 5rem 1.5rem; }
+            .section-title { font-size: 1.8rem; }
         }
-
-        /* ✅ RTL: تنظیمات متن برای فارسی */
-        html[dir="rtl"] body {
-            direction: rtl;
+        /* RTL */
+        [dir="rtl"] .mobile-menu {
+            right: auto;
+            left: 2rem;
+        }
+        [dir="rtl"] .section-title {
             text-align: right;
         }
-        html[dir="rtl"] .section-content,
-        html[dir="rtl"] .hero-content,
-        html[dir="rtl"] .card-content,
-        html[dir="rtl"] .team-card-content {
-            text-align: right;
-        }
-        html[dir="rtl"] ul {
+        [dir="rtl"] ul {
             margin-right: 2rem;
             margin-left: 0;
-            padding-right: 1.5rem;
         }
-        html[dir="rtl"] .team-card-content {
+        [dir="rtl"] .team-card-content {
             text-align: right;
+        }
+        [dir="rtl"] body {
+            font-family: 'Vazirmatn', 'Roboto', sans-serif;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
-        <div class="logo-container">
+        <div class="left-nav">
             <div class="logo-placeholder"></div>
-            <h1 class="site-title">MycoFlair.ir</h1>
+            <h1 class="site-title">MycoFlair Research & Innovation Team</h1>
         </div>
-        <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="right-nav">
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <button class="language-switch" id="languageSwitch">English</button>
         </div>
-        <nav class="nav-links" id="navLinks">
-            <a href="#hero" class="nav-link" id="nav-hero">Hero</a>
-            <a href="#about" class="nav-link" id="nav-about">About</a>
-            <a href="#advantages" class="nav-link" id="nav-advantages">Advantages</a>
-            <a href="#challenges" class="nav-link" id="nav-challenges">Challenges</a>
-            <a href="#achievements" class="nav-link" id="nav-achievements">Achievements</a>
-            <a href="#market" class="nav-link" id="nav-market">Market</a>
-            <a href="#ip" class="nav-link" id="nav-ip">IP Status</a>
-            <a href="#business" class="nav-link" id="nav-business">Business Model</a>
-            <a href="#collaboration" class="nav-link" id="nav-collaboration">Collaboration</a>
-            <a href="#team" class="nav-link" id="nav-team">اعضای تیم</a>
-            <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
-        </nav>
-        <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-menu" id="mobileMenu">
             <a href="#hero" class="nav-link">Hero</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#advantages" class="nav-link">Advantages</a>
@@ -415,11 +369,8 @@
             <a href="#collaboration" class="nav-link">Collaboration</a>
             <a href="#team" class="nav-link">اعضای تیم</a>
             <a href="#contact" class="nav-link">Contact</a>
-        </div>
-        <button class="language-switch" id="languageSwitch">English</button>
+        </nav>
     </header>
-
-    <!-- Hero -->
     <section class="hero" id="hero">
         <div class="hero-content">
             <h1 id="hero-title">MycoFlair Research & Innovation Team</h1>
@@ -428,12 +379,10 @@
             <p id="hero-desc2">A revolutionary solution for healthy, robust mushroom growth—eliminating the need for compost and offering exceptional resilience against environmental contaminants</p>
         </div>
     </section>
-
-    <!-- About -->
     <section class="section" id="about">
         <div class="section-content">
             <h2 class="section-title" id="about-title">Who Is MycoFlair and What Is Its Breakthrough?</h2>
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-image" style="background-image: url('3.jpg');"></div>
                 <div class="card-content">
                     <p id="about-content1">MycoFlair Research & Innovation Team is a dedicated group of independent researchers specializing in controlled-environment agriculture and biomaterials science.</p>
@@ -445,20 +394,16 @@
             </div>
         </div>
     </section>
-
-    <!-- Advantages -->
     <section class="section" id="advantages">
         <div class="section-content">
             <h2 class="section-title" id="advantages-title">Advantages of MGF-02 Over Conventional Mushroom Composts:</h2>
             <div class="cards-container" id="advantages-cards"></div>
         </div>
     </section>
-
-    <!-- Challenges -->
     <section class="section" id="challenges">
         <div class="section-content">
             <h2 class="section-title" id="challenges-title">Current Challenges in Mushroom Cultivation and Compost Production</h2>
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-image" style="background-image: url('4.jpg');"></div>
                 <div class="card-content">
                     <p id="challenges-content1">The mushroom cultivation industry currently relies heavily on natural substrates and expensive, contamination-prone composts.</p>
@@ -468,20 +413,16 @@
             </div>
         </div>
     </section>
-
-    <!-- Achievements -->
     <section class="section" id="achievements">
         <div class="section-content">
             <h2 class="section-title" id="achievements-title">Key Achievements with the MGF-02 Formula:</h2>
             <div class="cards-container" id="achievements-cards"></div>
         </div>
     </section>
-
-    <!-- Market -->
     <section class="section" id="market">
         <div class="section-content">
             <h2 class="section-title" id="market-title">Target Market</h2>
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-image" style="background-image: url('5.jpg');"></div>
                 <div class="card-content">
                     <p id="market-content1">The global market for edible and medicinal mushrooms was valued at over $60 billion in 2024 and is projected to exceed $100 billion by 2030.</p>
@@ -496,12 +437,10 @@
             </div>
         </div>
     </section>
-
-    <!-- IP -->
     <section class="section" id="ip">
         <div class="section-content">
             <h2 class="section-title" id="ip-title">Intellectual Property (IP) Status:</h2>
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-image" style="background-image: url('6.jpg');"></div>
                 <div class="card-content">
                     <p id="ip-content1">All laboratory documentation, reports, and mycelium performance data are available only under a Non-Disclosure Agreement (NDA).</p>
@@ -511,12 +450,10 @@
             </div>
         </div>
     </section>
-
-    <!-- Business -->
     <section class="section" id="business">
         <div class="section-content">
             <h2 class="section-title" id="business-title">Our Business Model:</h2>
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-image" style="background-image: url('7.jpg');"></div>
                 <div class="card-content">
                     <p id="business-content1">MycoFlair’s business model is based on trade-secret-based sales.</p>
@@ -526,20 +463,16 @@
             </div>
         </div>
     </section>
-
-    <!-- Collaboration -->
     <section class="section" id="collaboration">
         <div class="section-content">
             <h2 class="section-title" id="collaboration-title">Partnership Opportunities:</h2>
             <div class="cards-container" id="collaboration-cards"></div>
         </div>
     </section>
-
-    <!-- Team — ✅ تیتر: اعضای تیم */
     <section class="section team-section" id="team">
         <div class="section-content">
             <h2 class="section-title" id="team-title">اعضای تیم</h2>
-            <div class="card fade-in">
+            <div class="card">
                 <div class="card-image" style="background-image: url('8.jpg');"></div>
                 <div class="card-content">
                     <h3 id="team-name">MycoFlair Research & Innovation Team</h3>
@@ -547,7 +480,7 @@
                 </div>
             </div>
             <div class="team-cards" id="team-cards"></div>
-            <div class="card fade-in" style="margin-top: 2rem;">
+            <div class="card" style="margin-top: 3rem;">
                 <div class="card-content">
                     <p id="team-location">Based in Iran</p>
                     <p id="team-mission">MycoFlair Research & Innovation Team, The global originator of MGF-02 technology and a pioneer in fungal biotechnology.</p>
@@ -555,8 +488,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Contact -->
     <section class="section contact-section" id="contact">
         <div class="section-content">
             <h2 class="section-title" id="contact-title">Contact:</h2>
@@ -568,18 +499,14 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer — ✅ 2025 -->
     <footer class="footer">
         <p id="footer-copyright">© 2025 MycoFlair Research & Innovation Team. All rights reserved.</p>
         <p id="footer-domain">MycoFlair.ir</p>
     </footer>
-
     <script>
-        // همان translations قبلی — فقط تیتر تیم و سال به‌روز شده
         const translations = {
             en: {
-                siteTitle: "MycoFlair.ir",
+                siteTitle: "MycoFlair Research & Innovation Team",
                 languageButton: "فارسی",
                 navHero: "Hero",
                 navAbout: "About",
@@ -590,7 +517,7 @@
                 navIP: "IP Status",
                 navBusiness: "Business Model",
                 navCollaboration: "Collaboration",
-                navTeam: "اعضای تیم",
+                navTeam: "Team Members",
                 navContact: "Contact",
                 heroTitle: "MycoFlair Research & Innovation Team",
                 heroTagline: "\"Innovating the Future of Food Biotechnology and Industry\"",
@@ -647,7 +574,7 @@
                     "Joint research and development collaboration for global commercialization;",
                     "Implementation of joint pilot projects at international institutions and space agencies."
                 ],
-                teamTitle: "اعضای تیم",
+                teamTitle: "Team Members",
                 teamName: "MycoFlair Research & Innovation Team",
                 teamIntro: "The MycoFlair team comprises researchers and technologists with extensive experience in developing advanced biological and agricultural solutions, as well as next-generation space sciences.",
                 teamMembers: [
@@ -667,7 +594,7 @@
                 footerDomain: "MycoFlair.ir"
             },
             fa: {
-                siteTitle: "MycoFlair.ir",
+                siteTitle: "تیم تحقیقاتی و نوآوری مایکوفلر",
                 languageButton: "English",
                 navHero: "هیرو",
                 navAbout: "درباره",
@@ -682,7 +609,7 @@
                 navContact: "تماس",
                 heroTitle: "تیم تحقیقاتی و نوآوری مایکوفلر",
                 heroTagline: "”نوآوری در آینده زیست‌فناوری و صنعت غذا“",
-                heroDesc1: "فرمول پیشرفته  MGF-02، نسل جدیدی از محلول‌های مغذی طراحی‌شده برای پرورش قارچ‌های خوراکی و دارویی را ارائه می‌دهد.",
+                heroDesc1: "فرمول پیشرفته MGF-02، نسل جدیدی از محلول‌های مغذی طراحی‌شده برای پرورش قارچ‌های خوراکی و دارویی را ارائه می‌دهد.",
                 heroDesc2: "این راه‌حل انقلابی، رشدی سالم و قوی برای قارچ فراهم می‌کند — بدون نیاز به کمپوست و با مقاومت بی‌نظیر در برابر آلاینده‌های محیطی.",
                 aboutTitle: "مایکوفلر کیست و دستاورد شگفت‌انگیز آن چیست؟",
                 aboutContent1: "تیم تحقیقاتی و نوآوری مایکوفلر (MycoFlair Research & Innovation Team)، گروهی متعهد از پژوهشگران مستقل است که در حوزه‌های کشاورزی در محیط‌های کنترل‌شده و علوم مواد زیستی تخصص دارند.",
@@ -755,14 +682,11 @@
                 footerDomain: "MycoFlair.ir"
             }
         };
-
         let currentLanguage = 'en';
         const languageSwitch = document.getElementById('languageSwitch');
         const htmlElement = document.documentElement;
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
-
-        // Card generators — بدون تغییر
         function createAdvantagesCards() {
             const container = document.getElementById('advantages-cards');
             container.innerHTML = '';
@@ -811,86 +735,68 @@
                 container.appendChild(card);
             });
         }
-
         function updateContent() {
             const lang = translations[currentLanguage];
             document.querySelector('.site-title').textContent = lang.siteTitle;
             languageSwitch.textContent = lang.languageButton;
-
-            // Nav links
-            document.getElementById('nav-hero').textContent = lang.navHero;
-            document.getElementById('nav-about').textContent = lang.navAbout;
-            document.getElementById('nav-advantages').textContent = lang.navAdvantages;
-            document.getElementById('nav-challenges').textContent = lang.navChallenges;
-            document.getElementById('nav-achievements').textContent = lang.navAchievements;
-            document.getElementById('nav-market').textContent = lang.navMarket;
-            document.getElementById('nav-ip').textContent = lang.navIP;
-            document.getElementById('nav-business').textContent = lang.navBusiness;
-            document.getElementById('nav-collaboration').textContent = lang.navCollaboration;
-            document.getElementById('nav-team').textContent = lang.navTeam;
-            document.getElementById('nav-contact').textContent = lang.navContact;
-
-            // Hero
+            const links = mobileMenu.querySelectorAll('.nav-link');
+            links[0].textContent = lang.navHero;
+            links[1].textContent = lang.navAbout;
+            links[2].textContent = lang.navAdvantages;
+            links[3].textContent = lang.navChallenges;
+            links[4].textContent = lang.navAchievements;
+            links[5].textContent = lang.navMarket;
+            links[6].textContent = lang.navIP;
+            links[7].textContent = lang.navBusiness;
+            links[8].textContent = lang.navCollaboration;
+            links[9].textContent = lang.navTeam;
+            links[10].textContent = lang.navContact;
             document.getElementById('hero-title').textContent = lang.heroTitle;
             document.getElementById('hero-tagline').textContent = lang.heroTagline;
             document.getElementById('hero-desc1').textContent = lang.heroDesc1;
             document.getElementById('hero-desc2').textContent = lang.heroDesc2;
-
-            // Sections
             document.getElementById('about-title').textContent = lang.aboutTitle;
             document.getElementById('about-content1').textContent = lang.aboutContent1;
             document.getElementById('about-content2').textContent = lang.aboutContent2;
             document.getElementById('about-content3').textContent = lang.aboutContent3;
             document.getElementById('about-content4').textContent = lang.aboutContent4;
             document.getElementById('about-content5').textContent = lang.aboutContent5;
-
             document.getElementById('advantages-title').textContent = lang.advantagesTitle;
             createAdvantagesCards();
-
             document.getElementById('challenges-title').textContent = lang.challengesTitle;
             document.getElementById('challenges-content1').textContent = lang.challengesContent1;
             document.getElementById('challenges-content2').textContent = lang.challengesContent2;
             document.getElementById('challenges-content3').textContent = lang.challengesContent3;
-
             document.getElementById('achievements-title').textContent = lang.achievementsTitle;
             createAchievementsCards();
-
             document.getElementById('market-title').textContent = lang.marketTitle;
             document.getElementById('market-content1').textContent = lang.marketContent1;
             document.getElementById('market-content2').textContent = lang.marketContent2;
             const listItems = document.querySelectorAll('#market-list li');
             lang.marketList.forEach((item, i) => { if (listItems[i]) listItems[i].textContent = item; });
-
             document.getElementById('ip-title').textContent = lang.ipTitle;
             document.getElementById('ip-content1').textContent = lang.ipContent1;
             document.getElementById('ip-content2').textContent = lang.ipContent2;
             document.getElementById('ip-content3').textContent = lang.ipContent3;
-
             document.getElementById('business-title').textContent = lang.businessTitle;
             document.getElementById('business-content1').textContent = lang.businessContent1;
             document.getElementById('business-content2').textContent = lang.businessContent2;
             document.getElementById('business-content3').textContent = lang.businessContent3;
-
             document.getElementById('collaboration-title').textContent = lang.collaborationTitle;
             createCollaborationCards();
-
             document.getElementById('team-title').textContent = lang.teamTitle;
             document.getElementById('team-name').textContent = lang.teamName;
             document.getElementById('team-intro').textContent = lang.teamIntro;
             createTeamCards();
             document.getElementById('team-location').textContent = lang.teamLocation;
             document.getElementById('team-mission').textContent = lang.teamMission;
-
             document.getElementById('contact-title').textContent = lang.contactTitle;
             document.getElementById('contact-intro').textContent = lang.contactIntro;
             document.getElementById('contact-email').textContent = lang.contactEmail;
             document.getElementById('contact-phone').textContent = lang.contactPhone;
             document.getElementById('contact-website').textContent = lang.contactWebsite;
-
             document.getElementById('footer-copyright').textContent = lang.footerCopyright;
             document.getElementById('footer-domain').textContent = lang.footerDomain;
-
-            // RTL support
             if (currentLanguage === 'fa') {
                 htmlElement.setAttribute('dir', 'rtl');
                 htmlElement.setAttribute('lang', 'fa');
@@ -899,8 +805,6 @@
                 htmlElement.setAttribute('lang', 'en');
             }
         }
-
-        // Event handlers
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
             const spans = hamburger.querySelectorAll('span');
@@ -914,7 +818,6 @@
                 spans[2].style.transform = 'rotate(0)';
             }
         });
-
         mobileMenu.addEventListener('click', (e) => {
             if (e.target.classList.contains('nav-link')) {
                 mobileMenu.classList.remove('active');
@@ -924,12 +827,10 @@
                 spans[2].style.transform = 'rotate(0)';
             }
         });
-
         languageSwitch.addEventListener('click', () => {
             currentLanguage = currentLanguage === 'en' ? 'fa' : 'en';
             updateContent();
         });
-
         updateContent();
     </script>
 </body>
