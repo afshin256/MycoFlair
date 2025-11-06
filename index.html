@@ -3,493 +3,1217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MycoFlair.ir - Innovating the Future of Fungal Biotechnology</title>
-    <meta name="description" content="MycoFlair Research & Innovation Team - Leading breakthrough research in fungal cultivation technology with revolutionary MGF-02 formula.">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Vazirmatn:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Animation Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
-    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
-    
-    <!-- Custom Styles -->
+    <title>MycoFlair.ir - MycoFlair Research & Innovation Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-green: #2D5A27;
-            --secondary-green: #4A7C59;
-            --light-green: #8FBC8F;
-            --cream: #F5F5DC;
-            --soft-yellow: #F0E68C;
-            --dark-gray: #2C3E50;
-            --medium-gray: #5D6D7E;
+            --primary-green: #4CAF50;
+            --light-green: #8BC34A;
+            --cream: #FFF8E1;
+            --light-yellow: #FFF3E0;
+            --dark-green: #2E7D32;
+            --text-dark: #2C3E50;
+            --text-light: #F5F5F5;
+            --shadow: 0 8px 32px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
-        
+
+        [dir="rtl"] {
+            --text-dark: #2C3E50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #ffffff 0%, #f5f5dc 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--light-yellow) 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        
-        body.rtl {
-            font-family: 'Vazirmatn', sans-serif;
-        }
-        
-        .hero-bg {
-            background-image: url('./resources/1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
-        
-        .floating-card {
+
+        /* Header Styles */
+        .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            animation: float 6s ease-in-out infinite;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
-        
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
+
+        .logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: url('1.jpg') center/cover no-repeat;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        
-        .animate-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--primary-green); }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--dark-green), var(--primary-green));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .nav-link {
-            position: relative;
-            transition: color 0.3s ease;
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
         }
-        
-        .nav-link::after {
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            margin: 0 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: var(--transition);
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .language-switch {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .language-switch:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            right: 2rem;
+            background: white;
+            box-shadow: var(--shadow);
+            border-radius: 10px;
+            padding: 1rem;
+            z-index: 999;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 200px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu .nav-link {
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: slideUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, var(--light-yellow) 0%, var(--cream) 100%);
+        }
+
+        .section:nth-child(odd):not(.hero) {
+            background: white;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--dark-green);
+            position: relative;
+        }
+
+        .section-title::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-green);
-            transition: width 0.3s ease;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            border-radius: 2px;
         }
-        
-        .nav-link:hover::after {
-            width: 100%;
+
+        /* Cards with images */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .counter {
-            font-weight: 700;
-            color: var(--primary-green);
-        }
-        
-        .loaded {
-            opacity: 1;
-        }
-        
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-        
-        .achievement-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(245,245,220,0.8));
-            border-left: 4px solid var(--primary-green);
-        }
-        
-        .market-stat {
-            background: linear-gradient(135deg, var(--soft-yellow), rgba(240,230,140,0.7));
+
+        .card {
+            background: white;
             border-radius: 20px;
-            padding: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-green);
+        }
+
+        .card-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p, .card li {
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team-section {
+            background: linear-gradient(135deg, var(--light-yellow) 0%, var(--cream) 100%);
+        }
+
+        .team-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 0.6s ease-out forwards;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--primary-green);
+        }
+
+        .team-card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .team-card-content {
+            padding: 1.5rem;
             text-align: center;
+        }
+
+        .team-card h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+            font-size: 1.2rem;
+        }
+
+        .team-card p {
+            margin: 0.3rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
+            color: white;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 0.8rem 0;
+            font-size: 1.2rem;
+            color: var(--text-dark); /* Changed to black for contact info */
+            background: rgba(255,255,255,0.9);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .header {
+                padding: 1rem;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .site-title {
+                font-size: 1.2rem;
+            }
+            
+            .language-switch {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 4rem 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .card-content {
+                padding: 1rem;
+            }
+            
+            .team-card-content {
+                padding: 1rem;
+            }
+            
+            .team-card-image {
+                height: 160px;
+            }
+        }
+
+        /* RTL Support */
+        [dir="rtl"] .header {
+            text-align: right;
+        }
+
+        [dir="rtl"] .logo-container {
+            margin-right: auto;
+        }
+
+        [dir="rtl"] .nav-links {
+            margin: 0 2rem 0 0;
+        }
+
+        [dir="rtl"] .section-title::after {
+            right: 50%;
+            left: auto;
+        }
+
+        [dir="rtl"] ul {
+            margin-right: 2rem;
+            margin-left: 0;
+        }
+        
+        [dir="rtl"] .team-card-content {
+            text-align: right;
         }
     </style>
 </head>
-<body class="opacity-0">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex items-center space-x-3">
-                    <img src="./resources/logo.png" alt="MycoFlair Logo" class="h-10 w-auto">
-                    <span class="text-xl font-bold gradient-text">MycoFlair.ir</span>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" data-scroll class="nav-link text-gray-700 hover:text-green-700" data-translate="navHome">Home</a>
-                    <a href="research.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navResearch">Research</a>
-                    <a href="team.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navTeam">Team</a>
-                    <a href="contact.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navContact">Contact</a>
-                    
-                    <!-- Language Switcher -->
-                    <div class="flex items-center space-x-2 border-l border-gray-300 pl-4">
-                        <button data-lang="en" class="px-3 py-1 text-sm font-medium rounded-md bg-green-100 text-green-700 active">EN</button>
-                        <button data-lang="fa" class="px-3 py-1 text-sm font-medium rounded-md text-gray-500 hover:bg-green-100 hover:text-green-700">FA</button>
-                    </div>
-                </div>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-placeholder"></div>
+            <h1 class="site-title">MycoFlair.ir</h1>
         </div>
         
-        <!-- Mobile Menu -->
-        <div class="mobile-menu md:hidden fixed top-16 right-0 w-64 h-screen bg-white shadow-lg p-6">
-            <div class="flex flex-col space-y-4">
-                <a href="#home" data-scroll class="nav-link text-gray-700 hover:text-green-700" data-translate="navHome">Home</a>
-                <a href="research.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navResearch">Research</a>
-                <a href="team.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navTeam">Team</a>
-                <a href="contact.html" class="nav-link text-gray-700 hover:text-green-700" data-translate="navContact">Contact</a>
-                
-                <!-- Mobile Language Switcher -->
-                <div class="flex items-center space-x-2 pt-4 border-t border-gray-200">
-                    <button data-lang="en" class="px-3 py-1 text-sm font-medium rounded-md bg-green-100 text-green-700 active">EN</button>
-                    <button data-lang="fa" class="px-3 py-1 text-sm font-medium rounded-md text-gray-500 hover:bg-green-100 hover:text-green-700">FA</button>
-                </div>
-            </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-    </nav>
+        
+        <nav class="nav-links" id="navLinks">
+            <a href="#hero" class="nav-link" id="nav-hero">Hero</a>
+            <a href="#about" class="nav-link" id="nav-about">About</a>
+            <a href="#advantages" class="nav-link" id="nav-advantages">Advantages</a>
+            <a href="#challenges" class="nav-link" id="nav-challenges">Challenges</a>
+            <a href="#achievements" class="nav-link" id="nav-achievements">Achievements</a>
+            <a href="#market" class="nav-link" id="nav-market">Market</a>
+            <a href="#ip" class="nav-link" id="nav-ip">IP Status</a>
+            <a href="#business" class="nav-link" id="nav-business">Business Model</a>
+            <a href="#collaboration" class="nav-link" id="nav-collaboration">Collaboration</a>
+            <a href="#team" class="nav-link" id="nav-team">Team</a>
+            <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
+        </nav>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#hero" class="nav-link">Hero</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#advantages" class="nav-link">Advantages</a>
+            <a href="#challenges" class="nav-link">Challenges</a>
+            <a href="#achievements" class="nav-link">Achievements</a>
+            <a href="#market" class="nav-link">Market</a>
+            <a href="#ip" class="nav-link">IP Status</a>
+            <a href="#business" class="nav-link">Business Model</a>
+            <a href="#collaboration" class="nav-link">Collaboration</a>
+            <a href="#team" class="nav-link">Team</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        
+        <button class="language-switch" id="languageSwitch">English</button>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="hero-bg absolute inset-0 z-0"></div>
-        <div class="absolute inset-0 bg-black/40 z-10"></div>
-        
-        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="animate-on-scroll">
-                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 typewriter" data-translate="heroTitle">
-                    MycoFlair Research & Innovation Team
-                </h1>
-                <p class="text-xl md:text-2xl text-green-100 mb-4 font-medium" data-translate="heroTagline">
-                    Innovating the Future of Fungal Biotechnology
-                </p>
-                <p class="text-lg text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed" data-translate="heroDescription">
-                    Leading breakthrough research in fungal cultivation technology with our revolutionary MGF-02 formula for sustainable mushroom production.
-                </p>
-                <a href="research.html" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105" data-translate="heroButton">
-                    Explore Our Research
-                </a>
-            </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
-            </div>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 id="hero-title">MycoFlair Research & Innovation Team</h1>
+            <h2 id="hero-tagline">"Innovating the Future of Food Biotechnology and Industry"</h2>
+            <p id="hero-desc1">The advanced MGF-02 formula represents a new generation of nutrient solutions engineered for cultivating edible and medicinal mushrooms.</p>
+            <p id="hero-desc2">A revolutionary solution for healthy, robust mushroom growth—eliminating the need for compost and offering exceptional resilience against environmental contaminants</p>
         </div>
     </section>
 
-    <!-- Executive Summary -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="executiveTitle">Executive Summary</h2>
-                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="animate-on-scroll">
-                    <div class="floating-card rounded-2xl p-8 shadow-lg">
-                        <h3 class="text-2xl font-bold text-green-800 mb-4" data-translate="projectTitle">Project: MGF-02 Formula Development</h3>
-                        <p class="text-gray-700 leading-relaxed mb-6" data-translate="projectDesc">
-                            Advanced nutrient solution for cultivating edible and medicinal mushrooms on artificial substrates with anti-contamination properties.
-                        </p>
-                        <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-green-800">Ready for Commercialization</p>
-                                <p class="text-sm text-gray-600">Trade Secret Available</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="animate-on-scroll">
-                    <div class="market-stat">
-                        <div class="counter text-4xl font-bold mb-2" data-target="60">0</div>
-                        <p class="text-lg font-medium text-gray-700 mb-2">Billion USD</p>
-                        <p class="text-sm text-gray-600" data-translate="marketSize">Global mushroom market value (2024)</p>
-                    </div>
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-content">
+            <h2 class="section-title" id="about-title">Who Is MycoFlair and What Is Its Breakthrough?</h2>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('3.jpg');"></div>
+                <div class="card-content">
+                    <p id="about-content1">MycoFlair Research & Innovation Team is a dedicated group of independent researchers specializing in controlled-environment agriculture and biomaterials science.</p>
+                    <p id="about-content2">The team’s flagship product, the MGF-02 formula, represents the second generation of neutral, anti-contamination nutrient solutions—developed through iterative refinement and optimization of its predecessor, MGF-01.</p>
+                    <p id="about-content3">The core mission behind MGF-02 was to create a stable, fully synthetic environment capable of supporting complete mycelial development across a range of inert substrates—including polyester, perlite, LECA (expanded clay aggregate), and rockwool—without reliance on organic compost.</p>
+                    <p id="about-content4">This technology is the culmination of years of rigorous research, extensive field trials, and scientific validation across multiple disciplines.</p>
+                    <p id="about-content5">MGF-02 enables compost-free mushroom cultivation, marking a transformative leap toward modern, efficient, and sustainable agriculture.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Achievements -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="achievementsTitle">Key Achievements</h2>
-                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+    <!-- Advantages Section -->
+    <section class="section" id="advantages">
+        <div class="section-content">
+            <h2 class="section-title" id="advantages-title">Advantages of MGF-02 Over Conventional Mushroom Composts:</h2>
+            <div class="cards-container" id="advantages-cards">
+                <!-- Cards will be generated by JavaScript -->
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement1">Complete mycelium growth without compost</h3>
-                    <p class="text-gray-600 text-sm">Revolutionary breakthrough in substrate-independent cultivation</p>
-                </div>
-                
-                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement2">Significant reduction in water consumption</h3>
-                    <p class="text-gray-600 text-sm">Up to 70% reduction in water usage compared to traditional methods</p>
-                </div>
-                
-                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement3">Natural resistance to contaminants</h3>
-                    <p class="text-gray-600 text-sm">Built-in anti-contamination properties reduce crop loss by 90%</p>
-                </div>
-                
-                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement4">Successful lunar soil simulation tests</h3>
-                    <p class="text-gray-600 text-sm">Validated for space agriculture applications in extreme environments</p>
-                </div>
-                
-                <div class="achievement-card floating-card rounded-xl p-6 animate-on-scroll">
-                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-green-800 mb-2" data-translate="achievement5">Sustainable feed production from waste</h3>
-                    <p class="text-gray-600 text-sm">Circular economy solution converting waste to high-protein animal feed</p>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="section" id="challenges">
+        <div class="section-content">
+            <h2 class="section-title" id="challenges-title">Current Challenges in Mushroom Cultivation and Compost Production</h2>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('4.jpg');"></div>
+                <div class="card-content">
+                    <p id="challenges-content1">The mushroom cultivation industry currently relies heavily on natural substrates and expensive, contamination-prone composts.</p>
+                    <p id="challenges-content2">High production costs, excessive water consumption, and the persistent risk of fungal contamination are among the sector’s most critical challenges.</p>
+                    <p id="challenges-content3">The MGF-02 formula offers a groundbreaking solution—replacing natural substrates with neutral, anti-contamination synthetic environments that make mushroom production simpler, more cost-effective, and hygienically superior.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Competitive Advantage -->
-    <section class="py-20 bg-gradient-to-br from-green-50 to-cream">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="advantageTitle">Competitive Advantage</h2>
-                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
+    <!-- Achievements Section -->
+    <section class="section" id="achievements">
+        <div class="section-content">
+            <h2 class="section-title" id="achievements-title">Key Achievements with the MGF-02 Formula:</h2>
+            <div class="cards-container" id="achievements-cards">
+                <!-- Cards will be generated by JavaScript -->
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="floating-card rounded-xl p-8 animate-on-scroll">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage1">Unique formula combining nutrition, growth environment, and anti-contamination</h3>
-                            <p class="text-gray-600">First integrated solution addressing all critical aspects of mushroom cultivation in a single formula.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="floating-card rounded-xl p-8 animate-on-scroll">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage2">Suitable for space agriculture and controlled environments</h3>
-                            <p class="text-gray-600">Validated for extreme environments including lunar soil simulations and closed-system agriculture.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="floating-card rounded-xl p-8 animate-on-scroll">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage3">Commercial trade secret potential</h3>
-                            <p class="text-gray-600">Proprietary formula eligible for trade secret protection and confidential composition patents.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="floating-card rounded-xl p-8 animate-on-scroll">
-                    <div class="flex items-start space-x-4">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-green-800 mb-3" data-translate="advantage4">Versatile for multiple mushroom species</h3>
-                            <p class="text-gray-600">Compatible with various edible and medicinal mushroom species including button, oyster, and specialty varieties.</p>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Target Market Section -->
+    <section class="section" id="market">
+        <div class="section-content">
+            <h2 class="section-title" id="market-title">Target Market</h2>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('5.jpg');"></div>
+                <div class="card-content">
+                    <p id="market-content1">The global market for edible and medicinal mushrooms was valued at over $60 billion in 2024 and is projected to exceed $100 billion by 2030.</p>
+                    <p id="market-content2">Potential customers include:</p>
+                    <ul id="market-list">
+                        <li>Industrial mushroom production companies;</li>
+                        <li>Space and biotech research centers;</li>
+                        <li>Manufacturers of synthetic cultivation substrates;</li>
+                        <li>Livestock and aquaculture feed producers.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Market Analysis -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4" data-translate="marketTitle">Target Market</h2>
-                <div class="w-24 h-1 bg-green-600 mx-auto mb-8"></div>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <div class="text-center animate-on-scroll">
-                    <div class="counter text-5xl font-bold text-green-600 mb-2" data-target="100">0</div>
-                    <p class="text-lg font-medium text-gray-700" data-translate="marketSize">Billion USD by 2030</p>
-                </div>
-                <div class="text-center animate-on-scroll">
-                    <div class="counter text-5xl font-bold text-green-600 mb-2" data-target="15">0</div>
-                    <p class="text-lg font-medium text-gray-700">% Annual Growth Rate</p>
-                </div>
-                <div class="text-center animate-on-scroll">
-                    <div class="counter text-5xl font-bold text-green-600 mb-2" data-target="50">0</div>
-                    <p class="text-lg font-medium text-gray-700">+ Potential Partners</p>
-                </div>
-            </div>
-            
-            <div class="floating-card rounded-2xl p-8 animate-on-scroll">
-                <h3 class="text-2xl font-bold text-green-800 mb-6 text-center" data-translate="marketTitle">Target Market Segments</h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-green-800 mb-2">Industrial Producers</h4>
-                        <p class="text-sm text-gray-600">Large-scale mushroom cultivation companies</p>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-green-800 mb-2">Space Research Centers</h4>
-                        <p class="text-sm text-gray-600">NASA, ESA, and space agriculture programs</p>
-                    </div>
-                    
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-green-800 mb-2">Urban Farming Systems</h4>
-                        <p class="text-sm text-gray-600">Controlled environment agriculture</p>
-                    </div>
+    <!-- IP Status Section -->
+    <section class="section" id="ip">
+        <div class="section-content">
+            <h2 class="section-title" id="ip-title">Intellectual Property (IP) Status:</h2>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('6.jpg');"></div>
+                <div class="card-content">
+                    <p id="ip-content1">All laboratory documentation, reports, and mycelium performance data are available only under a Non-Disclosure Agreement (NDA).</p>
+                    <p id="ip-content2">The final formula is maintained as a trade secret and is eligible for patenting its confidential chemical composition in target countries.</p>
+                    <p id="ip-content3">Intellectual property rights for the project are held exclusively by the project lead and the MycoFlair Research & Innovation Team.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="py-20 bg-gradient-to-r from-green-600 to-green-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Revolutionize Mushroom Cultivation?</h2>
-                <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
-                    Join us in transforming the future of fungal biotechnology with our breakthrough MGF-02 formula.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="research.html" class="inline-block bg-white text-green-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-                        Explore Research Details
-                    </a>
-                    <a href="contact.html" class="inline-block border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white hover:text-green-600 transition-all duration-300">
-                        Get In Touch
-                    </a>
+    <!-- Business Model Section -->
+    <section class="section" id="business">
+        <div class="section-content">
+            <h2 class="section-title" id="business-title">Our Business Model:</h2>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('7.jpg');"></div>
+                <div class="card-content">
+                    <p id="business-content1">MycoFlair’s business model is based on trade-secret-based sales.</p>
+                    <p id="business-content2">Technical know-how and formulation can be transferred to reputable companies and global investors under a confidentiality agreement.</p>
+                    <p id="business-content3">Also, the possibility of issuing limited or exclusive operating licenses exists in return for suitable financial proposals.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="section" id="collaboration">
+        <div class="section-content">
+            <h2 class="section-title" id="collaboration-title">Partnership Opportunities:</h2>
+            <div class="cards-container" id="collaboration-cards">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="section team-section" id="team">
+        <div class="section-content">
+            <h2 class="section-title" id="team-title">Our Team:</h2>
+            <div class="card fade-in">
+                <div class="card-image" style="background-image: url('8.jpg');"></div>
+                <div class="card-content">
+                    <h3 id="team-name">MycoFlair Research & Innovation Team</h3>
+                    <p id="team-intro">The MycoFlair team comprises researchers and technologists with extensive experience in developing advanced biological and agricultural solutions, as well as next-generation space sciences.</p>
+                </div>
+            </div>
+            
+            <div class="team-cards" id="team-cards">
+                <!-- Team cards will be generated by JavaScript -->
+            </div>
+            
+            <div class="card fade-in" style="margin-top: 2rem;">
+                <div class="card-content">
+                    <p id="team-location">Based in Iran</p>
+                    <p id="team-mission">MycoFlair Research & Innovation Team, The global originator of MGF-02 technology and a pioneer in fungal biotechnology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="section-content">
+            <h2 class="section-title" id="contact-title">Contact:</h2>
+            <div class="contact-info">
+                <p id="contact-intro">For technical information, research documentation, or collaboration inquiries, please contact us via the details below:</p>
+                <p><i class="fas fa-envelope"></i> <span id="contact-email">Email: info@mycoflair.com</span></p>
+                <p><i class="fas fa-phone"></i> <span id="contact-phone">Phone: +989123092855</span></p>
+                <p><i class="fas fa-globe"></i> <span id="contact-website">Website: www.MycoFlair.ir</span></p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="flex items-center justify-center space-x-3 mb-4">
-                    <img src="./resources/logo.png" alt="MycoFlair Logo" class="h-8 w-auto">
-                    <span class="text-xl font-bold">MycoFlair.ir</span>
-                </div>
-                <p class="text-gray-400 mb-4" data-translate="copyright">© 2024 MycoFlair Research & Innovation Team. All rights reserved.</p>
-                <p class="text-sm text-gray-500">Innovating the Future of Fungal Biotechnology</p>
-            </div>
-        </div>
+    <footer class="footer">
+        <p id="footer-copyright">© 2024 MycoFlair Research & Innovation Team. All rights reserved.</p>
+        <p id="footer-domain">MycoFlair.ir</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="main.js"></script>
+    <script>
+        // Language data with exact provided text
+        const translations = {
+            en: {
+                // Header
+                siteTitle: "MycoFlair.ir",
+                languageButton: "فارسی",
+                navHero: "Hero",
+                navAbout: "About",
+                navAdvantages: "Advantages",
+                navChallenges: "Challenges",
+                navAchievements: "Achievements",
+                navMarket: "Market",
+                navIP: "IP Status",
+                navBusiness: "Business Model",
+                navCollaboration: "Collaboration",
+                navTeam: "Team",
+                navContact: "Contact",
+                
+                // Hero
+                heroTitle: "MycoFlair Research & Innovation Team",
+                heroTagline: "\"Innovating the Future of Food Biotechnology and Industry\"",
+                heroDesc1: "The advanced MGF-02 formula represents a new generation of nutrient solutions engineered for cultivating edible and medicinal mushrooms.",
+                heroDesc2: "A revolutionary solution for healthy, robust mushroom growth—eliminating the need for compost and offering exceptional resilience against environmental contaminants",
+                
+                // About
+                aboutTitle: "Who Is MycoFlair and What Is Its Breakthrough?",
+                aboutContent1: "MycoFlair Research & Innovation Team is a dedicated group of independent researchers specializing in controlled-environment agriculture and biomaterials science.",
+                aboutContent2: "The team’s flagship product, the MGF-02 formula, represents the second generation of neutral, anti-contamination nutrient solutions—developed through iterative refinement and optimization of its predecessor, MGF-01.",
+                aboutContent3: "The core mission behind MGF-02 was to create a stable, fully synthetic environment capable of supporting complete mycelial development across a range of inert substrates—including polyester, perlite, LECA (expanded clay aggregate), and rockwool—without reliance on organic compost.",
+                aboutContent4: "This technology is the culmination of years of rigorous research, extensive field trials, and scientific validation across multiple disciplines.",
+                aboutContent5: "MGF-02 enables compost-free mushroom cultivation, marking a transformative leap toward modern, efficient, and sustainable agriculture.",
+                
+                // Advantages
+                advantagesTitle: "Advantages of MGF-02 Over Conventional Mushroom Composts:",
+                advantagesList: [
+                    "Complete mycelial development without reliance on conventional compost, enabling cleaner, more controlled production.",
+                    "Reduced water and energy consumption, enhancing operational efficiency and sustainability.",
+                    "Built-in natural protection against fungal and microbial contamination, minimizing crop loss and the need for chemical interventions.",
+                    "Lower production, maintenance, and transportation costs due to simplified logistics and substrate handling.",
+                    "Spent growth substrate can be repurposed as high-value animal and aquaculture feed, supporting circular agriculture.",
+                    "A cutting-edge solution for next-generation applications, including space agriculture and controlled-environment farming systems—ideal for biotech and extraterrestrial food security initiatives."
+                ],
+                
+                advantagesContent: "MGF-02 isn’t just an alternative—it’s the foundation for the future of resilient, scalable, and eco-conscious mushroom production.",
+                
+                // Challenges
+                challengesTitle: "Current Challenges in Mushroom Cultivation and Compost Production",
+                challengesContent1: "The mushroom cultivation industry currently relies heavily on natural substrates and expensive, contamination-prone composts.",
+                challengesContent2: "High production costs, excessive water consumption, and the persistent risk of fungal contamination are among the sector’s most critical challenges.",
+                challengesContent3: "The MGF-02 formula offers a groundbreaking solution—replacing natural substrates with neutral, anti-contamination synthetic environments that make mushroom production simpler, more cost-effective, and hygienically superior.",
+                
+                // Achievements
+                achievementsTitle: "Key Achievements with the MGF-02 Formula:",
+                achievementsList: [
+                    "Achieved complete mycelial growth of button and oyster mushrooms without reliance on conventional composts, across a variety of synthetic and organic substrates;",
+                    "Successfully conducted outdoor mycelium runs in natural garden environments—without any protective equipment or contamination-prevention infrastructure;",
+                    "Demonstrated strong anti-contamination resistance through extensive field trials;",
+                    "Successfully cultivated mycelium in simulated lunar soil, as requested by Sharif University of Technology (Iran);",
+                    "Validated the potential to produce nutrient-rich livestock and fish feed from spent cultivation substrate;",
+                    "Significantly reduced production costs and water consumption."
+                ],
+                
+                // Market
+                marketTitle: "Target Market",
+                marketContent1: "The global market for edible and medicinal mushrooms was valued at over $60 billion in 2024 and is projected to exceed $100 billion by 2030.",
+                marketContent2: "Potential customers include:",
+                marketList: [
+                    "Industrial mushroom production companies;",
+                    "Space and biotech research centers;",
+                    "Manufacturers of synthetic cultivation substrates;",
+                    "Livestock and aquaculture feed producers."
+                ],
+                
+                // IP Status
+                ipTitle: "Intellectual Property (IP) Status:",
+                ipContent1: "All laboratory documentation, reports, and mycelium performance data are available only under a Non-Disclosure Agreement (NDA).",
+                ipContent2: "The final formula is maintained as a trade secret and is eligible for patenting its confidential chemical composition in target countries.",
+                ipContent3: "Intellectual property rights for the project are held exclusively by the project lead and the MycoFlair Research & Innovation Team.",
+                
+                // Business Model
+                businessTitle: "Our Business Model:",
+                businessContent1: "MycoFlair’s business model is based on trade-secret-based sales.",
+                businessContent2: "Technical know-how and formulation can be transferred to reputable companies and global investors under a confidentiality agreement.",
+                businessContent3: "Also, the possibility of issuing limited or exclusive operating licenses exists in return for suitable financial proposals.",
+                
+                // Collaboration
+                collaborationTitle: "Partnership Opportunities:",
+                collaborationList: [
+                    "Full acquisition of technical know-how and the MGF-01 / MGF-02 formula;",
+                    "Joint research and development collaboration for global commercialization;",
+                    "Implementation of joint pilot projects at international institutions and space agencies."
+                ],
+                
+                // Team
+                teamTitle: "Our Team:",
+                teamName: "MycoFlair Research & Innovation Team",
+                teamIntro: "The MycoFlair team comprises researchers and technologists with extensive experience in developing advanced biological and agricultural solutions, as well as next-generation space sciences.",
+                teamMembers: [
+                    {
+                        name: "Ismaeel Khorshidi",
+                        title: "Senior Researcher & Scientific Supervisor – Nutrient Solution Formulation and Mycelium Growth Analysis in Artificial Substrates"
+                    },
+                    {
+                        name: "Saeid Khorshidi",
+                        title: "Biological Systems Designer and Technical Supervisor of Growth Control with a Focus on Water and Energy Resource Optimization"
+                    },
+                    {
+                        name: "Amir Marandi",
+                        title: "Director of Business Development & International Partnerships"
+                    },
+                    {
+                        name: "Masoome Khani",
+                        title: "Researcher in Space Biotechnology"
+                    }
+                ],
+                teamLocation: "Based in Iran",
+                teamMission: "MycoFlair Research & Innovation Team, The global originator of MGF-02 technology and a pioneer in fungal biotechnology.",
+                
+                // Contact
+                contactTitle: "Contact:",
+                contactIntro: "For technical information, research documentation, or collaboration inquiries, please contact us via the details below:",
+                contactEmail: "Email: info@mycoflair.com",
+                contactPhone: "Phone: +989123092855",
+                contactWebsite: "Website: www.MycoFlair.ir",
+                
+                // Footer
+                footerCopyright: "© 2024 MycoFlair Research & Innovation Team. All rights reserved.",
+                footerDomain: "MycoFlair.ir"
+            },
+            fa: {
+                // Header
+                siteTitle: "MycoFlair.ir",
+                languageButton: "English",
+                navHero: "هیرو",
+                navAbout: "درباره",
+                navAdvantages: "مزایا",
+                navChallenges: "چالش‌ها",
+                navAchievements: "دستاوردها",
+                navMarket: "بازار",
+                navIP: "مالکیت معنوی",
+                navBusiness: "مدل تجاری",
+                navCollaboration: "همکاری",
+                navTeam: "تیم",
+                navContact: "تماس",
+                
+                // Hero
+                heroTitle: "تیم تحقیقاتی و نوآوری مایکوفلر",
+                heroTagline: "”نوآوری در آینده زیست‌فناوری و صنعت غذا“",
+                heroDesc1: "فرمول پیشرفته  MGF-02، نسل جدیدی از محلول‌های مغذی طراحی‌شده برای پرورش قارچ‌های خوراکی و دارویی را ارائه می‌دهد.",
+                heroDesc2: "این راه‌حل انقلابی، رشدی سالم و قوی برای قارچ فراهم می‌کند — بدون نیاز به کمپوست و با مقاومت بی‌نظیر در برابر آلاینده‌های محیطی.",
+                
+                // About
+                aboutTitle: "مایکوفلر کیست و دستاورد شگفت‌انگیز آن چیست؟",
+                aboutContent1: "تیم تحقیقاتی و نوآوری مایکوفلر (MycoFlair Research & Innovation Team)، گروهی متعهد از پژوهشگران مستقل است که در حوزه‌های کشاورزی در محیط‌های کنترل‌شده و علوم مواد زیستی تخصص دارند.",
+                aboutContent2: "محصول برتر این تیم، فرمول MGF-02، نسل دوم محلول‌های مغذی خنثی و ضدآلودگی است که از طریق چندین مرحله اصلاح و بهینه‌سازی تدریجی نسخه پیشین خود، یعنی MGF-01، توسعه یافته است.",
+                aboutContent3: "ماموریت اصلی پشت توسعه MGF-02، ایجاد محیطی پایدار و کاملاً مصنوعی بود که بتواند رشد کامل میسلیوم را روی طیفی از بسترهای غیرفعال—از جمله پلی‌استر، پرلیت، لیکا (سرامیک گسترده‌شده از خاک رس) و پشم‌سنگ—بدون نیاز به کمپوست آلی فراهم کند.",
+                aboutContent4: "این فناوری ثمره چندین سال پژوهش دقیق، آزمایش‌های گسترده میدانی و اعتبارسنجی علمی در رشته‌های مختلف است.",
+                aboutContent5: "MGF-02 امکان پرورش قارچ بدون کمپوست را فراهم می‌کند و گامی تحول‌آفرین به سوی کشاورزی‌ای مدرن، کارآمد و پایدار محسوب می‌شود.",
+                
+                // Advantages
+                advantagesTitle: "مزایای MGF-02 نسبت به کمپوست‌های رایج قارچ:",
+                advantagesList: [
+                    "رشد کامل میسلیوم بدون وابستگی به کمپوست‌های رایج، که امکان تولیدی تمیزتر و کنترل‌شده‌تر را فراهم می‌آورد.",
+                    "کاهش مصرف آب و انرژی، که کارایی عملیاتی و پایداری را افزایش می‌دهد.",
+                    "محافظت طبیعی ذاتی در برابر آلودگی‌های قارچی و میکروبی، که از ضایعات محصول جلوگیری کرده و نیاز به مداخلات شیمیایی را کاهش می‌دهد.",
+                    "هزینه‌های پایین‌تر تولید، نگهداری و حمل‌ونقل، ناشی از ساده‌سازی زنجیره تأمین و مدیریت بستر کشت.",
+                    "امکان بازیافت بستر مصرف‌شده‌ی رشد به‌عنوان خوراک با ارزش بالا برای دام و آبزی‌پروری، که از اقتصاد چرخشی در کشاورزی حمایت می‌کند.",
+                    "راه‌حلی پیشرفته برای کاربردهای نسل آینده، از جمله کشاورزی فضایی و سیستم‌های کشاورزی در محیط‌های کنترل‌شده—که به‌ویژه برای پروژه‌های زیست‌فناوری و امنیت غذایی فرازمینی ایده‌آل است."
+                ],
+                
+                advantagesContent: "MGF-02 تنها یک جایگزین نیست—بلکه پایه‌ای استوار برای آینده‌ای مقاوم، قابل‌مقیاس و سازگار با محیط‌زیست در تولید قارچ.",
+                
+                // Challenges
+                challengesTitle: "چالش‌های کنونی در پرورش قارچ و تولید کمپوست:",
+                challengesContent1: "صنعت پرورش قارچ امروزه به‌طور گسترده‌ای وابسته به بسترهای طبیعی و کمپوست‌هایی گران‌قیمت و مستعد آلودگی است.",
+                challengesContent2: "هزینه‌های بالای تولید، مصرف زیاد آب و خطر مداوم آلودگی‌های قارچی از جمله چالش‌های اساسی این حوزه محسوب می‌شوند.",
+                challengesContent3: "فرمول MGF-02 راه‌حلی نوآورانه ارائه می‌دهد: جایگزینی محیط‌های مصنوعی خنثی و ضدآلودگی با بسترهای طبیعی که تولید قارچ را ساده‌تر، مقرون‌به‌صرفه‌تر و بهداشتی‌تر می‌کند.",
+                
+                // Achievements
+                achievementsTitle: "دستاوردهای کلیدی با فرمول MGF-02:",
+                achievementsList: [
+                    "دستیابی به رشد کامل میسلیوم قارچ‌های دکمه‌ای و صدفی بدون نیاز به کمپوست‌های مرسوم فعلی، در انواع بسترهای مصنوعی و آلی؛",
+                    "اجرای موفقیت‌آمیز میسلیوم‌رانی در محیط طبیعی (باغ) بدون استفاده از هیچ‌گونه تجهیزات حفاظتی برای جلوگیری از آلودگی بستر کشت؛",
+                    "اثبات مقاومت بالا در برابر آلودگی‌ها در آزمایش‌های میدانی؛",
+                    "موفقیت در آزمایش پرورش میسلیوم در خاک شبیه‌سازی‌شده ماه، به درخواست دانشگاه صنعتی شریف (ایران)؛",
+                    "تأیید امکان تولید خوراک غنی برای دام و ماهی از پسماند بستر کشت؛",
+                    "کاهش چشمگیر هزینه‌های تولید و مصرف آب."
+                ],
+                
+                // Market
+                marketTitle: "بازار هدف:",
+                marketContent1: "بازار جهانی قارچ‌های خوراکی و دارویی در سال ۲۰۲۴ بیش از ۶۰ میلیارد دلار ارزش داشته و پیش‌بینی می‌شود تا سال ۲۰۳۰ از ۱۰۰ میلیارد دلار فراتر رود.",
+                marketContent2: "مشتریان بالقوه عبارتند از:",
+                marketList: [
+                    "شرکت‌های تولید صنعتی قارچ؛",
+                    "مراکز تحقیقاتی فضایی و زیستی؛",
+                    "تولیدکنندگان بسترهای کشت مصنوعی؛",
+                    "تولیدکنندگان خوراک دام و آبزیان."
+                ],
+                
+                // IP Status
+                ipTitle: "وضعیت مالکیت معنوی (IP Status):",
+                ipContent1: "تمامی مستندات آزمایشگاهی، گزارش‌ها و داده‌های عملکرد میسلیوم فقط تحت توافق‌نامه محرمانگی (NDA) قابل ارائه هستند.",
+                ipContent2: "فرمول نهایی به‌صورت یک راز تجاری نگهداری می‌شود و قابلیت ثبت اختراع ترکیب شیمیایی محرمانه‌ی آن در کشورهای هدف را دارد.",
+                ipContent3: "مالکیت فکری این پروژه به‌طور انحصاری در اختیار مجری پروژه و تیم تحقیقاتی و نوآوری مایکوفلر است. مالکیت فکری پروژه در اختیار مجری و تیم تحقیقاتی مایکوفِلِر است.",
+                
+                // Business Model
+                businessTitle: "برنامه تجاری ما (Business Model):",
+                businessContent1: "مدل تجاری مایکوفِلِر مبتنی بر فروش تحت راز تجاری است.",
+                businessContent2: "دانش فنی و فرمولاسیون می‌تواند به شرکت‌های معتبر و سرمایه‌گذاران جهانی با قرارداد محرمانگی واگذار شود.",
+                businessContent3: "همچنین امکان صدور مجوز بهره‌برداری محدود یا انحصاری در ازای پیشنهادات مالی مناسب وجود دارد.",
+                
+                // Collaboration
+                collaborationTitle: "پیشنهادات قابل بررسی (فرصت‌های همکاری):",
+                collaborationList: [
+                    "خرید کامل دانش فنی و فرمول MGF-02 / MGF-01؛",
+                    "همکاری مشترک در تحقیق و توسعه برای تجاری‌سازی جهانی؛",
+                    "اجرای پروژه‌های آزمایشی مشترک در مراکز بین‌المللی و سازمان‌های فضایی."
+                ],
+                
+                // Team
+                teamTitle: "بخش ۱۰:",
+                teamName: "تیم تحقیقاتی و نوآوری مایکوفلر:",
+                teamIntro: "تیم مایکوفلر از پژوهشگران و فناورانی تشکیل شده است که تجربه‌ی ارزشمندی در توسعه‌ی راه‌حل‌های زیستی و کشاورزی پیشرفته، همچنین علوم فضایی نوین دارند.",
+                teamMembers: [
+                    {
+                        name: "اسماعیل خورشیدی",
+                        title: "پژوهشگر ارشد و ناظر علمی – فرمولاسیون محلول مغذی و تحلیل رشد میسلیوم در بسترهای مصنوعی (Senior Researcher & Scientific Supervisor – Nutrient Solution Formulation and Mycelium Growth Analysis in Artificial Substrates)"
+                    },
+                    {
+                        name: "سعید خورشیدی",
+                        title: "طراح سامانه‌های زیستی و ناظر فنی کنترل شرایط رشد با رویکرد بهینه‌سازی منابع آب و انرژی (Biological Systems Designer and Technical Supervisor of Growth Control with a Focus on Water and Energy Resource Optimization)"
+                    },
+                    {
+                        name: "امیر مرندی",
+                        title: "مدیر توسعه تجاری و همکاری‌های بین‌المللی (Director of Business Development & International Partnerships)"
+                    },
+                    {
+                        name: "معصومه خانی",
+                        title: "پژوهشگر زیست‌فناوری فضایی (Researcher in Space Biotechnology)"
+                    }
+                ],
+                teamLocation: "محل فعالیت: ایران",
+                teamMission: "تیم تحقیقاتی و نوآوری مایکوفلر بنیان‌گذار فناوری MGF-02 در جهان و پیشگام در حوزه زیست‌فناوری قارچ.",
+                
+                // Contact
+                contactTitle: "اطلاعات تماس (Contact):",
+                contactIntro: "برای دریافت اطلاعات فنی، مستندات پژوهشی یا هماهنگی جهت همکاری، لطفاً از طریق اطلاعات زیر با ما در تماس باشید:",
+                contactEmail: "ایمیل : info@mycoflair.com",
+                contactPhone: "تلفن: +989123092855",
+                contactWebsite: "www.MycoFlair.ir",
+                
+                // Footer
+                footerCopyright: "© 2024 تیم تحقیقاتی و نوآوری مایکوفلر. کلیه حقوق محفوظ است.",
+                footerDomain: "MycoFlair.ir"
+            }
+        };
+
+        let currentLanguage = 'en';
+        const languageSwitch = document.getElementById('languageSwitch');
+        const htmlElement = document.documentElement;
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Create advantages cards
+        function createAdvantagesCards() {
+            const container = document.getElementById('advantages-cards');
+            container.innerHTML = '';
+            
+            const lang = translations[currentLanguage];
+            lang.advantagesList.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${0.1 + index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="card-image" style="background-image: url('${3 + index}.jpg');"></div>
+                    <div class="card-content">
+                        <p>• ${item}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Create achievements cards
+        function createAchievementsCards() {
+            const container = document.getElementById('achievements-cards');
+            container.innerHTML = '';
+            
+            const lang = translations[currentLanguage];
+            lang.achievementsList.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${0.1 + index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="card-image" style="background-image: url('${9 + index}.jpg');"></div>
+                    <div class="card-content">
+                        <p>• ${item}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Create collaboration cards
+        function createCollaborationCards() {
+            const container = document.getElementById('collaboration-cards');
+            container.innerHTML = '';
+            
+            const lang = translations[currentLanguage];
+            lang.collaborationList.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.style.animationDelay = `${0.1 + index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="card-image" style="background-image: url('${12 + index}.jpg');"></div>
+                    <div class="card-content">
+                        <p>• ${item}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Create team cards
+        function createTeamCards() {
+            const container = document.getElementById('team-cards');
+            container.innerHTML = '';
+            
+            const lang = translations[currentLanguage];
+            lang.teamMembers.forEach((member, index) => {
+                const card = document.createElement('div');
+                card.className = 'team-card';
+                card.style.animationDelay = `${0.1 + index * 0.1}s`;
+                card.innerHTML = `
+                    <div class="team-card-image" style="background-image: url('${15 + index}.jpg');"></div>
+                    <div class="team-card-content">
+                        <h4>${member.name}</h4>
+                        <p>${member.title}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateContent() {
+            const lang = translations[currentLanguage];
+            
+            // Update header
+            document.querySelector('.site-title').textContent = lang.siteTitle;
+            languageSwitch.textContent = lang.languageButton;
+            
+            // Update navigation
+            document.getElementById('nav-hero').textContent = lang.navHero;
+            document.getElementById('nav-about').textContent = lang.navAbout;
+            document.getElementById('nav-advantages').textContent = lang.navAdvantages;
+            document.getElementById('nav-challenges').textContent = lang.navChallenges;
+            document.getElementById('nav-achievements').textContent = lang.navAchievements;
+            document.getElementById('nav-market').textContent = lang.navMarket;
+            document.getElementById('nav-ip').textContent = lang.navIP;
+            document.getElementById('nav-business').textContent = lang.navBusiness;
+            document.getElementById('nav-collaboration').textContent = lang.navCollaboration;
+            document.getElementById('nav-team').textContent = lang.navTeam;
+            document.getElementById('nav-contact').textContent = lang.navContact;
+            
+            // Update hero
+            document.getElementById('hero-title').textContent = lang.heroTitle;
+            document.getElementById('hero-tagline').textContent = lang.heroTagline;
+            document.getElementById('hero-desc1').textContent = lang.heroDesc1;
+            document.getElementById('hero-desc2').textContent = lang.heroDesc2;
+            
+            // Update about
+            document.getElementById('about-title').textContent = lang.aboutTitle;
+            document.getElementById('about-content1').textContent = lang.aboutContent1;
+            document.getElementById('about-content2').textContent = lang.aboutContent2;
+            document.getElementById('about-content3').textContent = lang.aboutContent3;
+            document.getElementById('about-content4').textContent = lang.aboutContent4;
+            document.getElementById('about-content5').textContent = lang.aboutContent5;
+            
+            // Update advantages
+            document.getElementById('advantages-title').textContent = lang.advantagesTitle;
+            createAdvantagesCards();
+            
+            // Update challenges
+            document.getElementById('challenges-title').textContent = lang.challengesTitle;
+            document.getElementById('challenges-content1').textContent = lang.challengesContent1;
+            document.getElementById('challenges-content2').textContent = lang.challengesContent2;
+            document.getElementById('challenges-content3').textContent = lang.challengesContent3;
+            
+            // Update achievements
+            document.getElementById('achievements-title').textContent = lang.achievementsTitle;
+            createAchievementsCards();
+            
+            // Update market
+            document.getElementById('market-title').textContent = lang.marketTitle;
+            document.getElementById('market-content1').textContent = lang.marketContent1;
+            document.getElementById('market-content2').textContent = lang.marketContent2;
+            const marketList = document.querySelectorAll('#market-list li');
+            lang.marketList.forEach((item, index) => {
+                if (marketList[index]) {
+                    marketList[index].textContent = item;
+                }
+            });
+            
+            // Update IP status
+            document.getElementById('ip-title').textContent = lang.ipTitle;
+            document.getElementById('ip-content1').textContent = lang.ipContent1;
+            document.getElementById('ip-content2').textContent = lang.ipContent2;
+            document.getElementById('ip-content3').textContent = lang.ipContent3;
+            
+            // Update business model
+            document.getElementById('business-title').textContent = lang.businessTitle;
+            document.getElementById('business-content1').textContent = lang.businessContent1;
+            document.getElementById('business-content2').textContent = lang.businessContent2;
+            document.getElementById('business-content3').textContent = lang.businessContent3;
+            
+            // Update collaboration
+            document.getElementById('collaboration-title').textContent = lang.collaborationTitle;
+            createCollaborationCards();
+            
+            // Update team
+            document.getElementById('team-title').textContent = lang.teamTitle;
+            document.getElementById('team-name').textContent = lang.teamName;
+            document.getElementById('team-intro').textContent = lang.teamIntro;
+            createTeamCards();
+            document.getElementById('team-location').textContent = lang.teamLocation;
+            document.getElementById('team-mission').textContent = lang.teamMission;
+            
+            // Update contact
+            document.getElementById('contact-title').textContent = lang.contactTitle;
+            document.getElementById('contact-intro').textContent = lang.contactIntro;
+            document.getElementById('contact-email').textContent = lang.contactEmail;
+            document.getElementById('contact-phone').textContent = lang.contactPhone;
+            document.getElementById('contact-website').textContent = lang.contactWebsite;
+            
+            // Update footer
+            document.getElementById('footer-copyright').textContent = lang.footerCopyright;
+            document.getElementById('footer-domain').textContent = lang.footerDomain;
+            
+            // Update direction for RTL
+            if (currentLanguage === 'fa') {
+                htmlElement.setAttribute('dir', 'rtl');
+                htmlElement.setAttribute('lang', 'fa');
+            } else {
+                htmlElement.setAttribute('dir', 'ltr');
+                htmlElement.setAttribute('lang', 'en');
+            }
+        }
+
+        // Hamburger menu toggle
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            // Animate hamburger
+            const spans = hamburger.querySelectorAll('span');
+            if (mobileMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                spans[0].style.transform = 'rotate(0)';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'rotate(0)';
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'rotate(0)';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'rotate(0)';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                spans[0].style.transform = 'rotate(0)';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'rotate(0)';
+            }
+        });
+
+        languageSwitch.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'en' ? 'fa' : 'en';
+            updateContent();
+        });
+
+        // Initialize
+        updateContent();
+    </script>
 </body>
 </html>
+
