@@ -17,8 +17,8 @@ const translations = {
         heroTagline: "\"Innovating the Future of Food Biotechnology and Industry\"",
         heroDesc1: "The advanced MGF-02 formula represents a new generation of nutrient solutions engineered for cultivating edible and medicinal mushrooms.",
         heroDesc2: "A revolutionary solution for healthy, robust mushroom growth—eliminating the need for compost and offering exceptional resilience against environmental contaminants",
-        aboutTitle: "Who Is MycoFlair and What Is Its Breakthrough?",
-        aboutContent1: "MycoFlair Research & Innovation Team is a dedicated group of independent researchers specializing in controlled-environment agriculture and biomaterials science.",
+        aboutTitle: "Who Is MycoFlair? - What Is Its Breakthrough?",
+        aboutContent1: "MycoFlair Research & Innovation Team is a dedicated group of independent researchers specializing in controlled-agricultural environments and biomaterials science.",
         aboutContent2: "The team’s flagship product, the MGF-02 formula, represents the second generation of neutral, anti-contamination nutrient solutions—developed through iterative refinement and optimization of its predecessor, MGF-01.",
         aboutContent3: "The core mission behind MGF-02 was to create a stable, fully synthetic environment capable of supporting complete mycelial development across a range of inert substrates—including polyester, perlite, LECA (expanded clay aggregate), and rockwool—without reliance on organic compost.",
         aboutContent4: "This technology is the culmination of years of rigorous research, extensive field trials, and scientific validation across multiple disciplines.",
@@ -42,7 +42,7 @@ const translations = {
             "Successfully conducted outdoor mycelium runs in natural garden environments—without any protective equipment or contamination-prevention infrastructure;",
             "Demonstrated strong anti-contamination resistance through extensive field trials;",
             "Successfully cultivated mycelium in simulated lunar soil, as requested by Sharif University of Technology (Iran);",
-            "Validated the potential to produce nutrient-rich livestock and fish feed from spent cultivation substrate;",
+            "Validated the potential to produce Rich-nutrient for livestock and fish feed from spent cultivation substrate;",
             "Significantly reduced production costs and water consumption."
         ],
         marketTitle: "Target Market",
@@ -72,10 +72,10 @@ const translations = {
         teamName: "MycoFlair Research & Innovation Team",
         teamIntro: "The MycoFlair team comprises researchers and technologists with extensive experience in developing advanced biological and agricultural solutions, as well as next-generation space sciences.",
         teamMembers: [
-            { name: "Ismaeel Khorshidi", title: "Senior Researcher & Scientific Supervisor – Nutrient Solution Formulation and Mycelium Growth Analysis in Artificial Substrates", image: "ismaeel khorshidi.jpg" },
-            { name: "Saeid Khorshidi", title: "Biological Systems Designer and Technical Supervisor of Growth Control with a Focus on Water and Energy Resource Optimization", image: "saeid khorshidi.jpg" },
-            { name: "Amir Marandi", title: "Director of Business Development & International Partnerships", image: "amir marandi.jpg" },
-            { name: "Masoome Khani", title: "Researcher in Space Biotechnology", image: "masoome khani.jpg" }
+            { name: "Ismaeel Khorshidi - B.Sc. in Genetics.", title: "Senior Researcher and Scientific Supervisor.", image: "ismaeel khorshidi.jpg" },
+            { name: "Masoome Khani - M.Sc. in Astrophysics - Ph.D. Student in Condensed Matter Physics.", title: "Researcher in the Field of Space Exploration (Specifically the Moon).", image: "masoome khani.jpg" },
+            { name: "Amir Marandi - M.Sc. in Business Management.", title: "Director of Business Development and international partnership.", image: "amir marandi.jpg" },
+            { name: "Saeid Khorshidi - M.A. in Law.", title: "Biological Systems Designer and Legal Supervisor.", image: "saeid khorshidi.jpg" }
         ],
         teamLocation: "Based in Iran",
         teamMission: "MycoFlair Research & Innovation Team, The global originator of MGF-02 technology and a pioneer in fungal biotechnology.",
@@ -108,7 +108,7 @@ const translations = {
         aboutTitle: "مایکوفلر کیست و دستاورد شگفت‌انگیز آن چیست؟",
         aboutContent1: "تیم تحقیقاتی و نوآوری مایکوفلر (MycoFlair Research & Innovation Team)، گروهی متعهد از پژوهشگران مستقل است که در حوزه‌های کشاورزی در محیط‌های کنترل‌شده و علوم مواد زیستی تخصص دارند.",
         aboutContent2: "محصول برتر این تیم، فرمول MGF-02، نسل دوم محلول‌های مغذی خنثی و ضدآلودگی است که از طریق چندین مرحله اصلاح و بهینه‌سازی تدریجی نسخه پیشین خود، یعنی MGF-01، توسعه یافته است.",
-        aboutContent3: "ماموریت اصلی پشت توسعه MGF-02، ایجاد محیطی پایدار و کاملاً مصنوعی بود که بتواند رشد کامل میسلیوم را روی طیفی از بسترهای غیرفعال—از جمله پلی‌استر، پرلیت، لیکا (سرامیک گسترده‌شده از خاک رس) و پشم‌سنگ—بدون نیاز به کمپوست آلی فراهم کند.",
+        aboutContent3: "ماموریت اصلی توسعه MGF-02، ایجاد محیطی پایدار و کاملاً مصنوعی بود که بتواند رشد کامل میسلیوم را روی طیفی از بسترهای غیرفعال—از جمله پلی‌استر، پرلیت، لیکا (سرامیک گسترده‌شده از خاک رس) و پشم‌سنگ—بدون نیاز به کمپوست آلی فراهم کند.",
         aboutContent4: "این فناوری ثمره چندین سال پژوهش دقیق، آزمایش‌های گسترده میدانی و اعتبارسنجی علمی در رشته‌های مختلف است.",
         aboutContent5: "MGF-02 امکان پرورش قارچ بدون کمپوست را فراهم می‌کند و گامی تحول‌آفرین به سوی کشاورزی‌ای مدرن، کارآمد و پایدار محسوب می‌شود.",
         advantagesTitle: "مزایای MGF-02 نسبت به کمپوست‌های رایج قارچ:",
@@ -127,7 +127,7 @@ const translations = {
         achievementsTitle: "دستاوردهای کلیدی با فرمول MGF-02:",
         achievementsList: [
             "دستیابی به رشد کامل میسلیوم قارچ‌های دکمه‌ای و صدفی بدون نیاز به کمپوست‌های مرسوم فعلی، در انواع بسترهای مصنوعی و آلی؛",
-            "اجرای موفقیت‌آمیز میسلیوم‌رانی در محیط طبیعی (باغ) بدون استفاده از هیچ‌گونه تجهیزات حفاظتی برای جلوگیری از آلودگی بستر کشت؛",
+            "اجرای موفقیت‌آمیز میسلیوم‌رانی در محیط طبیعی (باغ) بدون استفاده از هر‌گونه تجهیزات حفاظتی برای جلوگیری از آلودگی بستر کشت؛",
             "اثبات مقاومت بالا در برابر آلودگی‌ها در آزمایش‌های میدانی؛",
             "موفقیت در آزمایش پرورش میسلیوم در خاک شبیه‌سازی‌شده ماه، به درخواست دانشگاه صنعتی شریف (ایران)؛",
             "تأیید امکان تولید خوراک غنی برای دام و ماهی از پسماند بستر کشت؛",
@@ -160,10 +160,10 @@ const translations = {
         teamName: "تیم تحقیقاتی و نوآوری مایکوفلر:",
         teamIntro: "تیم مایکوفلر از پژوهشگران و فناورانی تشکیل شده است که تجربه‌ی ارزشمندی در توسعه‌ی راه‌حل‌های زیستی و کشاورزی پیشرفته، همچنین علوم فضایی نوین دارند.",
         teamMembers: [
-            { name: "اسماعیل خورشیدی", title: "پژوهشگر ارشد و ناظر علمی – فرمولاسیون محلول مغذی و تحلیل رشد میسلیوم در بسترهای مصنوعی", image: "ismaeel khorshidi.jpg" },
-            { name: "سعید خورشیدی", title: "طراح سامانه‌های زیستی و ناظر فنی کنترل شرایط رشد با رویکرد بهینه‌سازی منابع آب و انرژی", image: "saeid khorshidi.jpg" },
-            { name: "امیر مرندی", title: "مدیر توسعه تجاری و همکاری‌های بین‌المللی", image: "amir marandi.jpg" },
-            { name: "معصومه خانی", title: "پژوهشگر زیست‌فناوری فضایی", image: "masoome khani.jpg" }
+            { name: "اسماعیل خورشیدی - کارشناسی ژنتیک.", title: "پژوهشگر ارشد و سرپرست علمی.", image: "ismaeel khorshidi.jpg" },
+            { name: "معصومه خانی - کارشناسی ارشد اخترفیزیک - دانشجوی دکترای فیزیک ماده چگال.", title: "پژوهشگر در حوزه اکتشافات فضایی (به طور خاص ماه).", image: "masoome khani.jpg" },
+            { name: "امیر مرندی - کارشناسی ارشد مدیریت بازرگانی.", title: "مدیر توسعه تجاری و همکاری‌های بین‌المللی.", image: "amir marandi.jpg" },
+            { name: "سعید خورشیدی - کارشناسی ارشد حقوق.", title: "طراح سامانه‌های بیولوژیکی و سرپرست حقوقی.", image: "saeid khorshidi.jpg" }
         ],
         teamLocation: "محل فعالیت: ایران",
         teamMission: "تیم تحقیقاتی و نوآوری مایکوفلر بنیان‌گذار فناوری MGF-02 در جهان و پیشگام در حوزه زیست‌فناوری قارچ.",
@@ -391,3 +391,4 @@ languageSwitch.addEventListener('click', () => {
 });
 
 updateContent();
+

@@ -45,7 +45,7 @@ body {
 .right-nav {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* کاهش فاصله بین دکمه‌ها */
+    gap: 1rem;
 }
 .logo-placeholder {
     width: 60px;
@@ -68,13 +68,12 @@ body {
     flex-direction: column;
     cursor: pointer;
     z-index: 1001;
-    padding: 0.4rem; /* کاهش پدینگ */
 }
 .hamburger span {
-    width: 24px; /* کاهش عرض خطوط */
-    height: 2px; /* کاهش ارتفاع خطوط */
+    width: 28px;
+    height: 3px;
     background: var(--text-dark);
-    margin: 3px 0; /* کاهش فاصله بین خطوط */
+    margin: 4px 0;
     transition: var(--transition);
     border-radius: 2px;
 }
@@ -82,13 +81,12 @@ body {
     background: var(--primary-green);
     color: white;
     border: none;
-    padding: 0.4rem 0.8rem; /* کاهش پدینگ */
-    border-radius: 20px; /* کاهش شعاع */
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
     transition: var(--transition);
     white-space: nowrap;
-    font-size: 0.9rem; /* کاهش سایز فونت */
 }
 .language-switch:hover {
     background: var(--dark-green);
@@ -97,17 +95,17 @@ body {
 /* Mobile Menu */
 .mobile-menu {
     display: none;
-    position: fixed; /* تغییر از absolute به fixed */
-    top: 100%; /* قرار گرفتن دقیقاً زیر هدر */
+    position: absolute;
+    top: calc(100% + 1rem); /* اصلاح: منو زیر هدر قرار می‌گیرد */
     right: 2rem;
     background: white;
     box-shadow: var(--shadow);
     border-radius: 12px;
-    padding: 0.6rem; /* کاهش پدینگ */
+    padding: 0.8rem;
     z-index: 999;
     flex-direction: column;
     gap: 0.2rem; /* کاهش فاصله بین آیتم‌ها */
-    min-width: 180px; /* کاهش عرض */
+    min-width: 180px; /* کاهش عرض برای موبایل */
     max-height: calc(100vh - 100px);
     overflow-y: auto;
 }
@@ -116,14 +114,14 @@ body {
     animation: fadeIn 0.3s ease-out;
 }
 .mobile-menu .nav-link {
-    padding: 0.5rem 0.8rem; /* کاهش پدینگ */
+    padding: 0.6rem 1rem; /* کاهش padding عمودی */
     text-align: center;
     border-radius: 8px;
     width: 100%;
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 600;
-    font-size: 0.95rem; /* کاهش سایز فونت */
+    font-size: 1rem; /* کاهش سایز فونت */
     transition: var(--transition);
     white-space: nowrap;
     overflow: hidden;
@@ -312,12 +310,15 @@ body {
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.2rem; }
     .section-title { font-size: 1.9rem; }
-    .header { padding: 0.8rem 1rem; } /* کاهش پدینگ هدر */
+    .header { padding: 1rem; }
     .site-title { font-size: 1rem; } /* کوچکتر شده برای موبایل */
+    .language-switch { padding: 0.5rem 1rem; font-size: 1rem; }
+    .cards-container { grid-template-columns: 1fr; }
+    .team-cards { grid-template-columns: 1fr; }
     .right-nav {
-        flex-direction: column-reverse; /* دکمه سوییچ زبان بالاتر، همبرگر پایین‌تر */
+        flex-direction: column-reverse; /* اصلاح: دکمه سوییچ زبان بالاتر، همبرگر پایین‌تر */
         align-items: flex-end; /* یا flex-start برای RTL */
-        gap: 0.3rem; /* کاهش فاصله */
+        gap: 0.5rem;
     }
     .logo-placeholder {
         width: 50px;
@@ -325,35 +326,20 @@ body {
         border-radius: 50%;
         aspect-ratio: 1 / 1;
     }
-    .hamburger {
-        padding: 0.3rem; /* کاهش پدینگ */
-    }
-    .hamburger span {
-        width: 22px; /* کاهش عرض */
-        height: 2px; /* کاهش ارتفاع */
-        margin: 2px 0; /* کاهش فاصله */
-    }
-    .language-switch {
-        padding: 0.3rem 0.6rem; /* کاهش پدینگ */
-        font-size: 0.85rem; /* کاهش سایز فونت */
-        border-radius: 15px; /* کاهش شعاع */
-    }
-    .cards-container { grid-template-columns: 1fr; }
-    .team-cards { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
     .hero h1 { font-size: 1.8rem; }
-    .section { padding: 4.5rem 1rem; }
+    .section { padding: 4.5rem 1.2rem; }
     .section-title { font-size: 1.7rem; }
     .site-title { font-size: 0.95rem; }
     .mobile-menu {
         right: 1rem;
-        padding: 0.5rem;
+        padding: 0.6rem;
         min-width: 160px;
     }
     .mobile-menu .nav-link {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.6rem;
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
     }
 }
 /* RTL */
