@@ -83,7 +83,7 @@ const translations = {
         contactIntro: "For technical information, research documentation, or collaboration inquiries, please contact us via the details below:",
         contactEmail: 'Email: <a href="mailto:info@mycoflair.ir">info@mycoflair.ir</a>',
         contactPhone: 'Phone: <a href="tel:+989123092855">+989123092855</a>',
-        contactLinkedin: 'LinkedIn: <a href="https://www.linkedin.com/in/mycoflair-team-1b5536391/">MycoFlair Team</a>',
+        // Removed LinkedIn entry
         footerCopyright: "© 2025 MycoFlair Research & Innovation Team. All rights reserved.",
         footerDomain: "MycoFlair.ir"
     },
@@ -171,7 +171,7 @@ const translations = {
         contactIntro: "برای دریافت اطلاعات فنی، مستندات پژوهشی یا هماهنگی جهت همکاری، لطفاً از طریق اطلاعات زیر با ما در تماس باشید:",
         contactEmail: 'ایمیل: <a href="mailto:info@mycoflair.ir">info@mycoflair.ir</a>',
         contactPhone: 'تلفن: <a href="tel:+989123092855">+989123092855</a>',
-        contactLinkedin: 'لینکدین: <a href="https://www.linkedin.com/in/mycoflair-team-1b5536391/">تیم مایکوفلر</a>',
+        // Removed LinkedIn entry
         footerCopyright: "© 2025 تیم تحقیقاتی و نوآوری مایکوفلر. کلیه حقوق محفوظ است.",
         footerDomain: "MycoFlair.ir"
     }
@@ -189,7 +189,7 @@ const advantagesImages = {
         '8.jpg'
     ],
     fa: [
-        '3.jpg', // می‌تونی برای fa نام‌های فارسی بذاری اگر متفاوت هست
+        '3.jpg',
         'Reduced water and energy consumption, enhancing operational efficiency and sustainability.jpg',
         '5.jpg',
         '6.jpg',
@@ -292,8 +292,10 @@ function createTeamCards() {
 
 function updateContent() {
     const lang = translations[currentLanguage];
+
     document.querySelector('.site-title').textContent = lang.siteTitle;
     languageSwitch.textContent = lang.languageButton;
+
     const links = mobileMenu.querySelectorAll('.nav-link');
     links[0].textContent = lang.navHero;
     links[1].textContent = lang.navAbout;
@@ -306,52 +308,69 @@ function updateContent() {
     links[8].textContent = lang.navCollaboration;
     links[9].textContent = lang.navTeam;
     links[10].textContent = lang.navContact;
+
     document.getElementById('hero-title').textContent = lang.heroTitle;
     document.getElementById('hero-tagline').textContent = lang.heroTagline;
     document.getElementById('hero-desc1').textContent = lang.heroDesc1;
     document.getElementById('hero-desc2').textContent = lang.heroDesc2;
+
     document.getElementById('about-title').textContent = lang.aboutTitle;
     document.getElementById('about-content1').textContent = lang.aboutContent1;
     document.getElementById('about-content2').textContent = lang.aboutContent2;
     document.getElementById('about-content3').textContent = lang.aboutContent3;
     document.getElementById('about-content4').textContent = lang.aboutContent4;
     document.getElementById('about-content5').textContent = lang.aboutContent5;
+
     document.getElementById('advantages-title').textContent = lang.advantagesTitle;
     createAdvantagesCards();
+
     document.getElementById('challenges-title').textContent = lang.challengesTitle;
     document.getElementById('challenges-content1').textContent = lang.challengesContent1;
     document.getElementById('challenges-content2').textContent = lang.challengesContent2;
     document.getElementById('challenges-content3').textContent = lang.challengesContent3;
+
     document.getElementById('achievements-title').textContent = lang.achievementsTitle;
     createAchievementsCards();
+
     document.getElementById('market-title').textContent = lang.marketTitle;
     document.getElementById('market-content1').textContent = lang.marketContent1;
     document.getElementById('market-content2').textContent = lang.marketContent2;
+
     const listItems = document.querySelectorAll('#market-list li');
-    lang.marketList.forEach((item, i) => { if (listItems[i]) listItems[i].textContent = item; });
+    lang.marketList.forEach((item, i) => {
+        if (listItems[i]) listItems[i].textContent = item;
+    });
+
     document.getElementById('ip-title').textContent = lang.ipTitle;
     document.getElementById('ip-content1').textContent = lang.ipContent1;
     document.getElementById('ip-content2').textContent = lang.ipContent2;
     document.getElementById('ip-content3').textContent = lang.ipContent3;
+
     document.getElementById('business-title').textContent = lang.businessTitle;
     document.getElementById('business-content1').textContent = lang.businessContent1;
     document.getElementById('business-content2').textContent = lang.businessContent2;
     document.getElementById('business-content3').textContent = lang.businessContent3;
+
     document.getElementById('collaboration-title').textContent = lang.collaborationTitle;
     createCollaborationCards();
+
     document.getElementById('team-title').textContent = lang.teamTitle;
     document.getElementById('team-name').textContent = lang.teamName;
     document.getElementById('team-intro').textContent = lang.teamIntro;
     createTeamCards();
+
     document.getElementById('team-location').textContent = lang.teamLocation;
     document.getElementById('team-mission').textContent = lang.teamMission;
+
     document.getElementById('contact-title').textContent = lang.contactTitle;
     document.getElementById('contact-intro').textContent = lang.contactIntro;
     document.getElementById('contact-email').innerHTML = lang.contactEmail;
     document.getElementById('contact-phone').innerHTML = lang.contactPhone;
-    document.getElementById('contact-linkedin').innerHTML = lang.contactLinkedin;
+    // No LinkedIn update needed — completely omitted
+
     document.getElementById('footer-copyright').textContent = lang.footerCopyright;
     document.getElementById('footer-domain').textContent = lang.footerDomain;
+
     if (currentLanguage === 'fa') {
         htmlElement.setAttribute('dir', 'rtl');
         htmlElement.setAttribute('lang', 'fa');
@@ -391,4 +410,3 @@ languageSwitch.addEventListener('click', () => {
 });
 
 updateContent();
-
